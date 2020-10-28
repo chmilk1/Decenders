@@ -1,0 +1,10 @@
+name: Descenders
+main: chmilk.descenders.Descenders
+version: 0.0.1
+description: Dungoneering Plugin
+
+commands:
+  fillchest:
+    description: test command to fill a chest
+  emptychest:
+    description: test command to empty a chest
