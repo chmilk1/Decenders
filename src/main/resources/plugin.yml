@@ -5,6 +5,24 @@ description: Dungoneering Plugin
 
 commands:
   fillchest:
-    description: test command to fill a chest
+    description: "test command to fill a chest"
   emptychest:
-    description: test command to empty a chest
+    description: "test command to empty a chest"
+  addchest:
+    description: "Add chest to a dungeon's loot list"
+    usage: "Usage /<command> [dungeon name]"
+  removechest:
+    description: "Remove a chest from a dungeon's loot list"
+    usage: "Usage /<command> [dungeon name]"
+  printLootSpots:
+    description: "Prints loot spots for a given dungeon"
+    usage: "Usage /<command> [dungeon name]"
+  fillLootSpots:
+    description: "Fills the loot spots of a dungeon"
+    usage: "Usage /<command> [dungeon name]"
+  emptyLootSpots:
+    description: "Empties the loot spots of a dungeon"
+    usage: "Usage /<command> [dungeon name]"
+  saveDungeon:
+    description: "Saves a given dungeon to a file"
+    usage: "Usage /<command> [dungeon name]"
