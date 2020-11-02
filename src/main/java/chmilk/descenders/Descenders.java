@@ -63,11 +63,13 @@ public class Descenders extends JavaPlugin {
 
             } else if (label.equalsIgnoreCase("emptychest") && sender.isOp()) {
                 if(player.getTargetBlock(null,5).getBlockData().getMaterial().equals(Material.CHEST)){
-                    LootBarrel lc = new LootBarrel((Barrel) player.getTargetBlock(null,5).getState());
+                    LootChest lc = new LootChest((Chest) player.getTargetBlock(null,5).getState());
                     lc.clearItems();
                     return true;
                 } else if (player.getTargetBlock(null, 5).getBlockData().getMaterial().equals(Material.BARREL)){
-
+                    LootBarrel lc = new LootBarrel((Barrel) player.getTargetBlock(null,5).getState());
+                    lc.clearItems();
+                    return true;
                 }
                 sender.sendMessage("invalid block type");
                 return true;
@@ -77,7 +79,8 @@ public class Descenders extends JavaPlugin {
                         dungeons.get(args[0]).addSpot(new LootChest((Chest) player.getTargetBlock(null, 5).getState()));
                         return true;
                     } else if (player.getTargetBlock(null, 5).getBlockData().getMaterial().equals(Material.BARREL)){
-
+                        dungeons.get(args[0]).addSpot(new LootBarrel((Barrel) player.getTargetBlock(null, 5).getState()));
+                        return true;
                     }
                     sender.sendMessage("invalid block type");
                     return true;
@@ -90,7 +93,8 @@ public class Descenders extends JavaPlugin {
                         dungeons.get(args[0]).addSpot(new LootChest((Chest) player.getTargetBlock(null, 5).getState()));
                         return true;
                     } else if (player.getTargetBlock(null, 5).getBlockData().getMaterial().equals(Material.BARREL)){
-
+                        dungeons.get(args[0]).addSpot(new LootBarrel((Barrel) player.getTargetBlock(null, 5).getState()));
+                        return true;
                     }
                     sender.sendMessage("invalid block type");
                     return true;

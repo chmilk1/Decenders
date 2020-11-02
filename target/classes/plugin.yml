@@ -23,3 +23,6 @@ commands:
   emptyLootSpots:
     description: "Empties the loot spots of a dungeon"
     usage: "Usage /<command> [dungeon name]"
+  saveDungeon:
+    description: "Saves a given dungeon to a file"
+    usage: "Usage /<command> [dungeon name]"

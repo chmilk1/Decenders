@@ -27,20 +27,23 @@ public class Dungeon {
         inProgress = false;
         difficulty = Difficulty.VETERAN;
         this.world = world;
+
+        this.internalName = internalName;
+        this.publicName = publicName;
+        this.description = description;
     }
 
     public Dungeon(World world, String internalName){
         this(world, internalName, "", "");
     }
 
-    public Dungeon(File file){
-        load(file);
-    }
-
     public void save(File file){
+        file.delete();
         BufferedWriter fileWriter;
         try {
             fileWriter = new BufferedWriter(new FileWriter(file));
+
+            fileWriter.write("testing");
 
             fileWriter.close();
         } catch (IOException e) {
