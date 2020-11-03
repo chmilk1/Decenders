@@ -30,6 +30,11 @@ public class LootChest extends LootContainer {
     }
 
     @Override
+    public String getType() {
+        return "Chest";
+    }
+
+    @Override
     public Location getLocation() {
         return chest.getLocation();
     }

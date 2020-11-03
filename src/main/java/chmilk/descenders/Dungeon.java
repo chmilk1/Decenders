@@ -6,7 +6,11 @@
 package chmilk.descenders;
 
 import chmilk.descenders.loot.Loot;
+import chmilk.descenders.loot.LootBarrel;
+import chmilk.descenders.loot.LootChest;
 import org.bukkit.World;
+import org.bukkit.block.Barrel;
+import org.bukkit.block.Chest;
 import org.bukkit.command.CommandSender;
 
 import java.io.*;
@@ -41,9 +45,16 @@ public class Dungeon {
         file.delete();
         BufferedWriter fileWriter;
         try {
+            file.createNewFile();
             fileWriter = new BufferedWriter(new FileWriter(file));
 
-            fileWriter.write("testing");
+            fileWriter.write(internalName + " " + publicName + " " + description);
+
+            for (Loot loot:
+                 lootSpots) {
+                fileWriter.newLine();
+                fileWriter.write(loot.getType() + " " + (int) loot.getLocation().getX() + " " + (int) loot.getLocation().getY() + " " + (int) loot.getLocation().getZ());
+            }
 
             fileWriter.close();
         } catch (IOException e) {
@@ -59,6 +70,26 @@ public class Dungeon {
         BufferedReader fileReader;
         try {
             fileReader = new BufferedReader(new FileReader(file));
+            fileReader.readLine();
+
+            String line;
+
+            while(fileReader.ready()){
+                line = fileReader.readLine();
+                String[] words = line.split(" ");
+                if(words.length > 3){
+                    String type = words[0];
+                    int x = Integer.parseInt(words[1]);
+                    int y = Integer.parseInt(words[2]);
+                    int z = Integer.parseInt(words[3]);
+
+                    if(words[0].equals("Chest")){
+                        lootSpots.add(new LootChest((Chest) world.getBlockAt(x,y,z).getState()));
+                    } else if(words[0].equals("Barrel")){
+                        lootSpots.add(new LootBarrel((Barrel) world.getBlockAt(x,y,z).getState()));
+                    }
+                }
+            }
 
             fileReader.close();
         } catch (IOException e) {
@@ -98,5 +129,9 @@ public class Dungeon {
         for (Loot loot: lootSpots) {
             loot.addLoot(100);
         }
+    }
+
+    public void deleteSpots(){
+        lootSpots.clear();
     }
 }

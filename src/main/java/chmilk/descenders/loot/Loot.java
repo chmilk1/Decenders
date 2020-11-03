@@ -8,10 +8,10 @@ package chmilk.descenders.loot;
 import org.bukkit.Location;
 
 public abstract class Loot {
-    String type;
     public abstract Location getLocation();
     public abstract int addLoot(int lootPoints);
     public abstract void clearItems();
+    public abstract String getType();
 
     public boolean isSameLocation(Loot loot){
         return getLocation().equals(loot.getLocation());
@@ -19,6 +19,6 @@ public abstract class Loot {
 
     @Override
     public String toString() {
-        return type + " " + getLocation().toString();
+        return getType() + " " + getLocation().toString();
     }
 }

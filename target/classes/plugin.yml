@@ -2,6 +2,7 @@ name: Descenders
 main: chmilk.descenders.Descenders
 version: 0.0.1
 description: Dungoneering Plugin
+api-version: 1.16
 
 commands:
   fillchest:
@@ -25,4 +26,7 @@ commands:
     usage: "Usage /<command> [dungeon name]"
   saveDungeon:
     description: "Saves a given dungeon to a file"
+    usage: "Usage /<command> [dungeon name]"
+  reloadDungeon:
+    description: "reloads a dungeon from a file"
     usage: "Usage /<command> [dungeon name]"

@@ -13,6 +13,11 @@ public class LootBarrel extends LootContainer {
     Barrel barrel;
     Location location;
 
+    @Override
+    public String getType() {
+        return "Barrel";
+    }
+
     public LootBarrel(Barrel barrel) {
         this.barrel = barrel;
     }
