@@ -14,11 +14,14 @@ import org.bukkit.block.Chest;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 
 public class Descenders extends JavaPlugin {
+
+    public static Plugin plugin;
 
     HashMap<String, Dungeon> dungeons = new HashMap<>();
 
@@ -26,6 +29,8 @@ public class Descenders extends JavaPlugin {
 
     @Override
     public  void onEnable(){
+        plugin = this;
+
         dungeons.put(TEST_DUNGEON, new Dungeon(getServer().getWorld("world"),
                 TEST_DUNGEON,
                 "Test Dungeon",
@@ -183,14 +188,14 @@ public class Descenders extends JavaPlugin {
         clears dungeon
          */
         } else if(label.equalsIgnoreCase("clearDungeon") && sender.isOp()) {
-            if(args.length > 0) {
+            if (args.length > 0) {
                 dungeons.get(args[0]).deleteSpots();
-                sender.sendMessage(ChatColor.GREEN +"Dungeon " + args[0] + " loaded!");
+                sender.sendMessage(ChatColor.GREEN + "Dungeon " + args[0] + " loaded!");
                 return true;
             }
             sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
             return true;
-
+        }
         return false;
     }
 }
