@@ -36,7 +36,8 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <outputDirectory>C:/Users/james/Programs/Decenters MC Server/plugins</outputDirectory>
+                    <outputDirectory>J:/MC/decendes test/plugins</outputDirectory>
+                    <!--<outputDirectory>C:/Users/james/Programs/Decenters MC Server/plugins</outputDirectory>-->
                 </configuration>
             </plugin>
         </plugins>
