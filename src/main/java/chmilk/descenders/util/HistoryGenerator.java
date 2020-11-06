@@ -7,6 +7,6 @@ package chmilk.descenders.util;
 
 public class HistoryGenerator {
     public History generateHistory(){
-        
+        return null;
     }
 }
