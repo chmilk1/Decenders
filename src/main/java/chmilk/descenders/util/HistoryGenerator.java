@@ -46,10 +46,48 @@ public class HistoryGenerator {
                         return "Smashing";
                 }
             case PIERCE:
-                return "PIERCING";
+                return "Piercing";
         }
         return "";
     }
+
+    public String getTrait(Trait trait){
+        switch (trait){
+            case FLAMING:
+                switch (rand.nextInt(3)){
+                    case 0:
+                        return "Flame";
+                    case 1:
+                        return "Fire";
+                    case 2:
+                        return "Heat";
+                }
+            case COLD:
+                return "Frost";
+            case SHARP:
+                switch (rand.nextInt(3)){
+                    case 0:
+                        return "Sharpness";
+                    case 1:
+                        return "Cleaving";
+                    case 2:
+                        return "Stabbing";
+                }
+            case BLUNT:
+                switch (rand.nextInt(3)){
+                    case 0:
+                        return "Power";
+                    case 1:
+                        return "Crushing";
+                    case 2:
+                        return "Smashing";
+                }
+            case PIERCE:
+                return "Armour Piercing";
+        }
+        return "";
+    }
+
 
     public static enum NameQuality{
         KING, NOBLE, MERCHANT, PEASANT
@@ -60,10 +98,10 @@ public class HistoryGenerator {
         MALE,FEMALE
     }
 
-    public String generateSwordHistory(Trait trait, String weaponType, Gender gender){
+    public String generateSwordHistory(Trait trait, String weaponType, Gender gender, NameQuality nameQuality){
         StringBuilder name = new StringBuilder();
 
-        int type = rand.nextInt(4);
+        int type = rand.nextInt(2);
         //type 0: Name’s Trait Weapon + of Place
         if(type == 0){
             //full name
@@ -91,13 +129,14 @@ public class HistoryGenerator {
                 if(rand.nextBoolean()){
                     name.append("The " + getLastName() + " Family ");
                 } else {
+                    name.append(getFancyName(gender, nameQuality) + " ");
+                }
 
+                name.append(weaponType + " ");
+                if(rand.nextBoolean()){
+                    name.append(" of" + getTrait(trait));
                 }
             }
-        } else if (type == 2){
-
-        } else if (type == 3){
-
         }
         return name.toString();
     }
@@ -121,35 +160,40 @@ public class HistoryGenerator {
                 if (rand.nextInt(100) < 60){
                     switch (gender){
                         case MALE:
-                            name = "King";
+                            name = "King ";
                             break;
                         case FEMALE:
-                            name = "Queen";
+                            name = "Queen ";
                             break;
                     }
                 } else if (rand.nextInt(100) < 60){
-                    name = "Warlord";
+                    name = "Warlord ";
                 }
                 break;
             case NOBLE:
                 if (rand.nextInt(100) < 35){
                     switch (gender){
                         case MALE:
-                            name = "Sir";
+                            name = "Sir ";
                             break;
                         case FEMALE:
-                            name = "Mis";
+                            name = "Mis ";
                             break;
                     }
                 } else if(rand.nextInt(100) < 40){
-                    name = "Nobel";
+                    name = "Nobel ";
                 }
                 break;
             case MERCHANT:
+                if(rand.nextInt(100) < 40){
+                    name = "Smith ";
+                } else if(rand.nextInt(100) < 40){
+                    name = "Trader ";
+                }
                 break;
             case PEASANT:
         }
-        return name + " " + getFirstName(gender) + " " + getLastName();
+        return name + getFirstName(gender) + " " + getLastName();
     }
 
     public String getFirstName(Gender gender){
