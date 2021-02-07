@@ -30,3 +30,6 @@ commands:
   reloadDungeon:
     description: "reloads a dungeon from a file"
     usage: "Usage /<command> [dungeon name]"
+  clearDungeon:
+    description: "clears the loot spots in a dungeon"
+    usage: "Usage /<command> [dungeon name]"
