@@ -13,7 +13,7 @@ public abstract class LootContainer extends Loot {
 
     @Override
     public int addLoot(int lootPoints){
-        addItem(new ItemStack(Material.LEATHER_HELMET));
+        addItem(LootManager.createWeapon(0,0));
         return 0;
     }
 }
