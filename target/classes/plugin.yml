@@ -9,6 +9,15 @@ commands:
     description: "test command to fill a chest"
   emptychest:
     description: "test command to empty a chest"
+  summonthegodslayer:
+    description: "thou wishes to kill a god???"
+    usage: "Usage /<command>"
+  summontrident:
+    description: "thou wishes to kill a god???"
+    usage: "Usage /<command>"
+  summonfunnystick:
+    description: "thou wishes to kill a god???"
+    usage: "Usage /<command>"
   addchest:
     description: "Add chest to a dungeon's loot list"
     usage: "Usage /<command> [dungeon name]"

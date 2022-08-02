@@ -6,7 +6,7 @@
 
     <groupId>com.ndnmc.descenders</groupId>
     <artifactId>Descenders</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <repositories>
         <repository>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.3-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -34,13 +34,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.2.2</version>
                 <configuration>
-<!--                    <outputDirectory>J:/MC/decendes test/plugins</outputDirectory>-->
-                    <outputDirectory>C:/Users/james/Programs/Decenters MC Server/plugins</outputDirectory>
+                    <outputDirectory>J:/MC/decendes test/plugins</outputDirectory>
+<!--                    <outputDirectory>C:/Users/james/Programs/Decenters MC Server/plugins</outputDirectory>-->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
