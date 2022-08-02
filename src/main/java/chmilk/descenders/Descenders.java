@@ -7,6 +7,7 @@ package chmilk.descenders;
 
 import chmilk.descenders.loot.LootBarrel;
 import chmilk.descenders.loot.LootChest;
+import chmilk.descenders.util.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Barrel;
@@ -126,6 +127,11 @@ public class Descenders extends JavaPlugin {
                     return true;
                 }
                 sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
+                return true;
+            }
+            else if(label.equalsIgnoreCase("summonthegodslayer") && sender.isOp()) {
+                player.getWorld().strikeLightningEffect(player.getLocation());
+                 player.getInventory().addItem(ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 3, 50, true, true));
                 return true;
             }
         }
