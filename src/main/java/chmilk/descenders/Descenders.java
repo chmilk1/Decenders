@@ -131,7 +131,12 @@ public class Descenders extends JavaPlugin {
             }
             else if(label.equalsIgnoreCase("summonthegodslayer") && sender.isOp()) {
                 player.getWorld().strikeLightningEffect(player.getLocation());
-                 player.getInventory().addItem(ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 3, 50, true, true));
+                 player.getInventory().addItem(ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 1, true, true));
+                return true;
+            }
+            else if(label.equalsIgnoreCase("summontrident") && sender.isOp()) {
+                player.getWorld().strikeLightningEffect(player.getLocation());
+                player.getInventory().addItem(ItemBuilder.createTrident("Neptunes Trident", null, 200, 3, true, true, true));
                 return true;
             }
         }

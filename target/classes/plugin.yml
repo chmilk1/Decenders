@@ -12,6 +12,12 @@ commands:
   summonthegodslayer:
     description: "thou wishes to kill a god???"
     usage: "Usage /<command>"
+  summontrident:
+    description: "thou wishes to kill a god???"
+    usage: "Usage /<command>"
+  summonfunnystick:
+    description: "thou wishes to kill a god???"
+    usage: "Usage /<command>"
   addchest:
     description: "Add chest to a dungeon's loot list"
     usage: "Usage /<command> [dungeon name]"
