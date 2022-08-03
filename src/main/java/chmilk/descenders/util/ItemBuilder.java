@@ -32,6 +32,21 @@ public class ItemBuilder {
      * @return The completed item.
      */
     public static ItemStack createWeapon(String Name, List<String> lore, Material mat, double attackDmg, double attackSpeed, boolean enchanted){
+        return createWeapon(Name, lore, mat, attackDmg, attackSpeed, enchanted, null);
+    }
+
+    /**
+     * This is the main method which makes use of addNum method.
+     * @param Name Item Name
+     * @param lore Flavor Text for an item
+     * @param mat Material for the weapon
+     * @param attackDmg Attack Damage in hearts
+     * @param attackSpeed Attack Speed in swinds per second
+     * @param enchanted makes a tool shiny!
+     * @param enchant weap enchant class for fine tuned controll
+     * @return The completed item.
+     */
+    public static ItemStack createWeapon(String Name, List<String> lore, Material mat, double attackDmg, double attackSpeed, boolean enchanted, WeaponEnchantments enchant){
         ItemStack item = new ItemStack(mat);
         ItemMeta meta = item.getItemMeta();
         if(lore == null){
@@ -42,6 +57,8 @@ public class ItemBuilder {
         if(enchanted){
             meta.addEnchant(Enchantment.LUCK,1, true);
         }
+
+        enchant.applyEnchants(meta, lore);
 
         AttributeModifier attackDmgA = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDmgA);
@@ -127,83 +144,3 @@ public class ItemBuilder {
     }
 }
 
-class WeaponEnchantments{
-    int mend; //Mending
-    int unbreaking; //Unbreaking
-    int unbreakable; //Applies the Unbreakable type
-
-    int vanish; //Curse of Vanishing
-
-    int fire; //Fire Aspect
-    int baneofarth; //Bane of Arthropods
-    int knock; //Knockback
-    int sharp; //Sharpness
-    int smite; //Smite
-    int sweep; //Sweeping Edge
-
-    int poision;
-    int withering;
-
-    public WeaponEnchantments(int mend, int unbreaking, int unbreakable, int vanish, int fire, int baneofarth, int knock, int sharp, int smite, int sweep, int poision, int withering) {
-        this.mend = mend;
-        this.unbreaking = unbreaking;
-        this.unbreakable = unbreakable;
-        this.vanish = vanish;
-        this.fire = fire;
-        this.baneofarth = baneofarth;
-        this.knock = knock;
-        this.sharp = sharp;
-        this.smite = smite;
-        this.sweep = sweep;
-        this.poision = poision;
-        this.withering = withering;
-    }
-
-    public void applyEnchants(ItemMeta meta, List<String> lore){
-        //general
-        if(mend > 0){
-            meta.addEnchant(Enchantment.MENDING, mend, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Mending");
-        }
-        if(unbreaking > 0){
-            meta.addEnchant(Enchantment.DURABILITY, unbreaking, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Unbreaking " +unbreaking);
-        }
-        if(unbreakable > 0){
-            meta.setUnbreakable(true);
-            lore.add(ChatColor.RESET + "" + ChatColor.GOLD + "Unbreakable");
-        }
-
-        //curses
-        if(vanish > 0){
-            meta.addEnchant(Enchantment.VANISHING_CURSE, vanish, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Curse of Vanishing");
-        }
-
-        //melee expected
-        if(fire > 0){
-            meta.addEnchant(Enchantment.FIRE_ASPECT, fire, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Fire Aspect " + fire);
-        }
-        if(baneofarth > 0){
-            meta.addEnchant(Enchantment.DAMAGE_ARTHROPODS, baneofarth, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Bane of Arthropods " + baneofarth);
-        }
-        if(knock > 0){
-            meta.addEnchant(Enchantment.KNOCKBACK, knock, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Knockback " + knock);
-        }
-        if(sharp > 0){
-            meta.addEnchant(Enchantment.DAMAGE_ALL, sharp, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Sharpness " + sharp);
-        }
-        if(smite > 0){
-            meta.addEnchant(Enchantment.DAMAGE_UNDEAD, smite, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Smite " + smite);
-        }
-        if(sweep > 0){
-            meta.addEnchant(Enchantment.KNOCKBACK, sweep, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Smite " + sweep);
-        }
-    }
-}
