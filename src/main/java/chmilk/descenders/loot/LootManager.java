@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class LootManager {
     public static ItemStack createWeapon(int lootPoints, int power){
-        return ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 3, true, true);
+        return ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 3, true);
     }
 
     public static ItemStack createArmour(int lootPoints, int power){

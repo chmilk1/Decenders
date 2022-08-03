@@ -28,11 +28,10 @@ public class ItemBuilder {
      * @param mat Material for the weapon
      * @param attackDmg Attack Damage in hearts
      * @param attackSpeed Attack Speed in swinds per second
-     * @param unbreakable makes a tool unbreakable
      * @param enchanted makes a tool shiny!
      * @return The completed item.
      */
-    public static ItemStack createWeapon(String Name, List<String> lore, Material mat, double attackDmg, double attackSpeed, boolean unbreakable, boolean enchanted){
+    public static ItemStack createWeapon(String Name, List<String> lore, Material mat, double attackDmg, double attackSpeed, boolean enchanted){
         ItemStack item = new ItemStack(mat);
         ItemMeta meta = item.getItemMeta();
         if(lore == null){
@@ -59,7 +58,6 @@ public class ItemBuilder {
 //        }
 
         meta.setLore(lore);
-        meta.setUnbreakable(unbreakable);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -73,12 +71,11 @@ public class ItemBuilder {
      * @param lore Flavor Text for an item
      * @param attackDmg Attack Damage in hearts
      * @param attackSpeed Attack Speed in swinds per second
-     * @param unbreakable makes a tool unbreakable
      * @param enchanted makes a tool shiny!
      * @param returning adds the loyalty enchantment
      * @return The completed item.
      */
-    public static ItemStack createTrident(String Name, List<String> lore, double attackDmg, double attackSpeed, boolean unbreakable, boolean enchanted, boolean returning){
+    public static ItemStack createTrident(String Name, List<String> lore, double attackDmg, double attackSpeed, boolean enchanted, boolean returning){
         ItemStack item = new ItemStack(Material.TRIDENT);
         ItemMeta meta = item.getItemMeta();
         if(lore == null){
@@ -110,7 +107,6 @@ public class ItemBuilder {
 //        }
 
         meta.setLore(lore);
-        meta.setUnbreakable(unbreakable);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -132,7 +128,82 @@ public class ItemBuilder {
 }
 
 class WeaponEnchantments{
-    int fire;
-    int unbreaking;
-    int unbreakable;
+    int mend; //Mending
+    int unbreaking; //Unbreaking
+    int unbreakable; //Applies the Unbreakable type
+
+    int vanish; //Curse of Vanishing
+
+    int fire; //Fire Aspect
+    int baneofarth; //Bane of Arthropods
+    int knock; //Knockback
+    int sharp; //Sharpness
+    int smite; //Smite
+    int sweep; //Sweeping Edge
+
+    int poision;
+    int withering;
+
+    public WeaponEnchantments(int mend, int unbreaking, int unbreakable, int vanish, int fire, int baneofarth, int knock, int sharp, int smite, int sweep, int poision, int withering) {
+        this.mend = mend;
+        this.unbreaking = unbreaking;
+        this.unbreakable = unbreakable;
+        this.vanish = vanish;
+        this.fire = fire;
+        this.baneofarth = baneofarth;
+        this.knock = knock;
+        this.sharp = sharp;
+        this.smite = smite;
+        this.sweep = sweep;
+        this.poision = poision;
+        this.withering = withering;
+    }
+
+    public void applyEnchants(ItemMeta meta, List<String> lore){
+        //general
+        if(mend > 0){
+            meta.addEnchant(Enchantment.MENDING, mend, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Mending");
+        }
+        if(unbreaking > 0){
+            meta.addEnchant(Enchantment.DURABILITY, unbreaking, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Unbreaking " +unbreaking);
+        }
+        if(unbreakable > 0){
+            meta.setUnbreakable(true);
+            lore.add(ChatColor.RESET + "" + ChatColor.GOLD + "Unbreakable");
+        }
+
+        //curses
+        if(vanish > 0){
+            meta.addEnchant(Enchantment.VANISHING_CURSE, vanish, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Curse of Vanishing");
+        }
+
+        //melee expected
+        if(fire > 0){
+            meta.addEnchant(Enchantment.FIRE_ASPECT, fire, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Fire Aspect " + fire);
+        }
+        if(baneofarth > 0){
+            meta.addEnchant(Enchantment.DAMAGE_ARTHROPODS, baneofarth, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Bane of Arthropods " + baneofarth);
+        }
+        if(knock > 0){
+            meta.addEnchant(Enchantment.KNOCKBACK, knock, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Knockback " + knock);
+        }
+        if(sharp > 0){
+            meta.addEnchant(Enchantment.DAMAGE_ALL, sharp, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Sharpness " + sharp);
+        }
+        if(smite > 0){
+            meta.addEnchant(Enchantment.DAMAGE_UNDEAD, smite, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Smite " + smite);
+        }
+        if(sweep > 0){
+            meta.addEnchant(Enchantment.KNOCKBACK, sweep, true);
+            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Smite " + sweep);
+        }
+    }
 }
