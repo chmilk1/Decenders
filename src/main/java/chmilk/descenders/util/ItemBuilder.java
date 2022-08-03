@@ -61,12 +61,10 @@ public class ItemBuilder {
         enchant.applyEnchants(meta, lore);
 
         AttributeModifier attackDmgA = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDmgA);
-        lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Attack Damage " + attackDmg);
+        lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Damage " + attackDmg);
 
         AttributeModifier attackSpeedA = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", (1/4)*attackSpeed, AttributeModifier.Operation.ADD_SCALAR, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedA);
-        lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Attack Speed " + attackSpeed);
+        lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Speed " + attackSpeed);
 
 //        AttributeModifier attackKbA = new AttributeModifier(UUID.randomUUID(), "generic.attackKnockback", knockback, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
 //        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_KNOCKBACK, attackKbA);
@@ -78,6 +76,8 @@ public class ItemBuilder {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDmgA);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedA);
         item.setItemMeta(meta);
         return item;
     }
@@ -110,12 +110,10 @@ public class ItemBuilder {
         }
 
         AttributeModifier attackDmgA = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDmgA);
-        lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Attack Damage " + attackDmg);
+        lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Damage " + attackDmg);
 
-        AttributeModifier attackSpeedA = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", (1/4)*attackSpeed, AttributeModifier.Operation.ADD_SCALAR, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedA);
-        lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Attack Speed " + attackSpeed);
+        AttributeModifier attackSpeedA = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", attackSpeed-4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Speed " + attackSpeed);
 
 //        AttributeModifier attackKbA = new AttributeModifier(UUID.randomUUID(), "generic.attackKnockback", knockback, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
 //        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_KNOCKBACK, attackKbA);
@@ -127,6 +125,8 @@ public class ItemBuilder {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDmgA);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedA);
         item.setItemMeta(meta);
         return item;
     }

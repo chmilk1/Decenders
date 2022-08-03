@@ -47,7 +47,7 @@ public class WeaponEnchantments{
         //general
         if(mend > 0){
             meta.addEnchant(Enchantment.MENDING, mend, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Mending");
+            lore.add(ChatColor.RESET + "" + ChatColor.GOLD + "Mending");
         }
         if(unbreaking > 0){
             meta.addEnchant(Enchantment.DURABILITY, unbreaking, true);
@@ -61,7 +61,7 @@ public class WeaponEnchantments{
         //curses
         if(vanish > 0){
             meta.addEnchant(Enchantment.VANISHING_CURSE, vanish, true);
-            lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Curse of Vanishing");
+            lore.add(ChatColor.RESET + "" + ChatColor.RED + "Curse of Vanishing");
         }
 
         //melee
