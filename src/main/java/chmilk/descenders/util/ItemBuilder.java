@@ -63,7 +63,7 @@ public class ItemBuilder {
         AttributeModifier attackDmgA = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Damage " + attackDmg);
 
-        AttributeModifier attackSpeedA = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", (1/4)*attackSpeed, AttributeModifier.Operation.ADD_SCALAR, EquipmentSlot.HAND);
+        AttributeModifier attackSpeedA = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", attackSpeed-4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Speed " + attackSpeed);
 
 //        AttributeModifier attackKbA = new AttributeModifier(UUID.randomUUID(), "generic.attackKnockback", knockback, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
@@ -109,10 +109,10 @@ public class ItemBuilder {
             lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Loyalty");
         }
 
-        AttributeModifier attackDmgA = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
+        AttributeModifier attackDmgA = new AttributeModifier("generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1);
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Damage " + attackDmg);
 
-        AttributeModifier attackSpeedA = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", attackSpeed-4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier attackSpeedA = new AttributeModifier("generic.attackSpeed", attackSpeed-4, AttributeModifier.Operation.ADD_NUMBER);
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Speed " + attackSpeed);
 
 //        AttributeModifier attackKbA = new AttributeModifier(UUID.randomUUID(), "generic.attackKnockback", knockback, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);

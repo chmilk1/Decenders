@@ -140,6 +140,10 @@ public class Descenders extends JavaPlugin {
                 player.getInventory().addItem(ItemBuilder.createTrident("Neptunes Trident", null, 200, 3, true, true));
                 return true;
             }
+            else if(label.equalsIgnoreCase("summonfunnystick") && sender.isOp()) {
+                player.getInventory().addItem(ItemBuilder.createWeapon("HEHEHEHA",null,Material.STICK,.5,8,false,new WeaponEnchantments(0,0,0,0,0,0,10000,0,0,0,0,0)));
+                return true;
+            }
         }
         /*
         prints the loot spots of a dungeon
