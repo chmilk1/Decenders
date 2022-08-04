@@ -25,8 +25,9 @@ public class WeaponEnchantments{
     int smite; //Smite
     int sweep; //Sweeping Edge
 
-    int poision;
+    int poision; //TODO: implement custom enchantments
     int withering;
+    int frost;
 
     public WeaponEnchantments(int mend, int unbreaking, int unbreakable, int vanish, int fire, int baneofarth, int knock, int sharp, int smite, int sweep, int poision, int withering) {
         this.mend = mend;

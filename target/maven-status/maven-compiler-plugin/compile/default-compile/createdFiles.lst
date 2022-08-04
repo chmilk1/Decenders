@@ -7,6 +7,7 @@ chmilk\descenders\loot\LootChest.class
 chmilk\descenders\util\ItemBuilder.class
 chmilk\descenders\loot\Loot.class
 chmilk\descenders\Difficulty.class
+chmilk\descenders\util\ArmourEnchantments.class
 chmilk\descenders\util\Names.class
 chmilk\descenders\playerinfo\HealthManager.class
 chmilk\descenders\loot\LootManager.class

@@ -51,6 +51,8 @@ public class ItemBuilder {
         ItemMeta meta = item.getItemMeta();
         if(lore == null){
             lore = new ArrayList<String>();
+        } else {
+            lore.add("");
         }
         meta.setDisplayName(ChatColor.RESET + Name);
 
@@ -58,7 +60,9 @@ public class ItemBuilder {
             meta.addEnchant(Enchantment.LUCK,1, true);
         }
 
-        enchant.applyEnchants(meta, lore);
+        if(enchant != null){
+            enchant.applyEnchants(meta, lore);
+        }
 
         AttributeModifier attackDmgA = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Damage " + attackDmg);
@@ -97,6 +101,8 @@ public class ItemBuilder {
         ItemMeta meta = item.getItemMeta();
         if(lore == null){
             lore = new ArrayList<String>();
+        } else {
+            lore.add("");
         }
         meta.setDisplayName(ChatColor.RESET + Name);
 
@@ -131,8 +137,45 @@ public class ItemBuilder {
         return item;
     }
 
-    public static ItemStack createArmour(){
-        return null;
+
+    /**
+     * This is the main method which makes use of addNum method.
+     * @param Name Item Name
+     * @param lore Flavor Text for an item
+     * @param mat The mat of the armour
+     * @param armour The armour value of this piece
+     * @param enchanted makes a tool shiny!
+     * @param enchant adds the enchantments that you want
+     * @return The completed item.
+     */
+    public static ItemStack createArmour(String Name, List<String> lore, Material mat, double armour, boolean enchanted, ArmourEnchantments enchant){
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        if(lore == null){
+            lore = new ArrayList<String>();
+        } else {
+            lore.add("");
+        }
+        meta.setDisplayName(ChatColor.RESET + Name);
+
+        if(enchanted){
+            meta.addEnchant(Enchantment.LUCK,1, true);
+        }
+
+        if(enchant != null){
+            enchant.applyEnchants(meta, lore);
+        }
+
+        AttributeModifier armourA = new AttributeModifier("generic.armour", armour, AttributeModifier.Operation.MULTIPLY_SCALAR_1);
+        lore.add(ChatColor.RESET + "" + ChatColor.BLUE + armour + " Armour Points");
+
+        meta.setLore(lore);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, armourA);
+        item.setItemMeta(meta);
+        return item;
     }
 
     public static ItemStack createArtifact(){
