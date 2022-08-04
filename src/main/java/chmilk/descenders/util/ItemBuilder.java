@@ -170,7 +170,7 @@ public class ItemBuilder {
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + armour + " Armour Points");
 
         meta.setLore(lore);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        //meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, armourA);
