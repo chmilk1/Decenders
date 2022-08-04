@@ -44,6 +44,110 @@ public class ArmourEnchantments {
         this.thorns = thorns;
     }
 
+    public int getMend() {
+        return mend;
+    }
+
+    public void setMend(int mend) {
+        this.mend = mend;
+    }
+
+    public int getUnbreaking() {
+        return unbreaking;
+    }
+
+    public void setUnbreaking(int unbreaking) {
+        this.unbreaking = unbreaking;
+    }
+
+    public int getUnbreakable() {
+        return unbreakable;
+    }
+
+    public void setUnbreakable(int unbreakable) {
+        this.unbreakable = unbreakable;
+    }
+
+    public int getVanish() {
+        return vanish;
+    }
+
+    public void setVanish(int vanish) {
+        this.vanish = vanish;
+    }
+
+    public int getAqua() {
+        return aqua;
+    }
+
+    public void setAqua(int aqua) {
+        this.aqua = aqua;
+    }
+
+    public int getBlast() {
+        return blast;
+    }
+
+    public void setBlast(int blast) {
+        this.blast = blast;
+    }
+
+    public int getStrider() {
+        return strider;
+    }
+
+    public void setStrider(int strider) {
+        this.strider = strider;
+    }
+
+    public int getFalling() {
+        return falling;
+    }
+
+    public void setFalling(int falling) {
+        this.falling = falling;
+    }
+
+    public int getFire() {
+        return fire;
+    }
+
+    public void setFire(int fire) {
+        this.fire = fire;
+    }
+
+    public int getProj() {
+        return proj;
+    }
+
+    public void setProj(int proj) {
+        this.proj = proj;
+    }
+
+    public int getProt() {
+        return prot;
+    }
+
+    public void setProt(int prot) {
+        this.prot = prot;
+    }
+
+    public int getResp() {
+        return resp;
+    }
+
+    public void setResp(int resp) {
+        this.resp = resp;
+    }
+
+    public int getThorns() {
+        return thorns;
+    }
+
+    public void setThorns(int thorns) {
+        this.thorns = thorns;
+    }
+
     public void applyEnchants(ItemMeta meta, List<String> lore){
         //general
         if(mend > 0){

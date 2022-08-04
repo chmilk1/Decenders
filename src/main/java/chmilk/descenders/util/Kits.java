@@ -14,12 +14,12 @@ public class Kits {
     public static void giveStarter(Player player){
         player.getInventory().addItem(ItemBuilder.createWeapon(
                 (player.getDisplayName() + "'s Training Sword"),null, Material.WOODEN_SWORD,5,2,false,
-                new WeaponEnchantments(0,0,1,0,0,0,0,0,0,0,0,0)));
+                new WeaponEnchantments(0,0,1,0,0,0,0,0,0,0,0,0,0)));
 
         player.getInventory().addItem(ItemBuilder.createBow(player.getDisplayName() + "'s Basic Bow" ,null,false,false,null));
         player.getInventory().addItem(new ItemStack(Material.ARROW, 12));
 
-        player.getInventory().addItem(new ItemStack(Material.MELON, 5));
+        player.getInventory().addItem(new ItemStack(Material.MELON_SLICE, 8));
 
         player.getInventory().addItem(ItemBuilder.createArmour(
                 "Starter Chestplate",null,Material.CHAINMAIL_CHESTPLATE,3,false,null));

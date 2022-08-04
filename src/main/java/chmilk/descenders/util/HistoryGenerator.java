@@ -10,14 +10,14 @@ import java.util.Random;
 public class HistoryGenerator {
     static Random rand = new Random();
 
-    public static enum Trait{
-        BLUNT, SHARP, FLAMING, COLD, PIERCE
+    public static enum Trait {
+        BLUNT, SHARP, FLAMING, COLD, PIERCE, POISION
     }
 
-    public String getIngTrait(Trait trait){
-        switch (trait){
+    public static String getIngTrait(Trait trait) {
+        switch (trait) {
             case FLAMING:
-                switch (rand.nextInt(3)){
+                switch (rand.nextInt(3)) {
                     case 0:
                         return "Flaming";
                     case 1:
@@ -28,7 +28,7 @@ public class HistoryGenerator {
             case COLD:
                 return "Freezing";
             case SHARP:
-                switch (rand.nextInt(3)){
+                switch (rand.nextInt(3)) {
                     case 0:
                         return "Cutting";
                     case 1:
@@ -37,7 +37,7 @@ public class HistoryGenerator {
                         return "Stabbing";
                 }
             case BLUNT:
-                switch (rand.nextInt(3)){
+                switch (rand.nextInt(3)) {
                     case 0:
                         return "Bruising";
                     case 1:
@@ -45,16 +45,25 @@ public class HistoryGenerator {
                     case 2:
                         return "Smashing";
                 }
+            case POISION:
+                switch (rand.nextInt(3)) {
+                    case 0:
+                        return "Infecting";
+                    case 1:
+                        return "Tainting";
+                    case 2:
+                        return "Ruining";
+                }
             case PIERCE:
                 return "Piercing";
         }
         return "";
     }
 
-    public String getTrait(Trait trait){
-        switch (trait){
+    public static String getTrait(Trait trait) {
+        switch (trait) {
             case FLAMING:
-                switch (rand.nextInt(3)){
+                switch (rand.nextInt(3)) {
                     case 0:
                         return "Flame";
                     case 1:
@@ -65,7 +74,7 @@ public class HistoryGenerator {
             case COLD:
                 return "Frost";
             case SHARP:
-                switch (rand.nextInt(3)){
+                switch (rand.nextInt(3)) {
                     case 0:
                         return "Sharpness";
                     case 1:
@@ -73,8 +82,17 @@ public class HistoryGenerator {
                     case 2:
                         return "Stabbing";
                 }
+            case POISION:
+                switch (rand.nextInt(3)) {
+                    case 0:
+                        return "Poison";
+                    case 1:
+                        return "Infected";
+                    case 2:
+                        return "Deathly";
+                }
             case BLUNT:
-                switch (rand.nextInt(3)){
+                switch (rand.nextInt(3)) {
                     case 0:
                         return "Power";
                     case 1:
@@ -89,30 +107,30 @@ public class HistoryGenerator {
     }
 
 
-    public static enum NameQuality{
+    public static enum NameQuality {
         KING, NOBLE, MERCHANT, PEASANT
     }
 
     //there are only two :)
-    public static enum Gender{
-        MALE,FEMALE
+    public static enum Gender {
+        MALE, FEMALE
     }
 
-    public String generateSwordHistory(Trait trait, String weaponType, Gender gender, NameQuality nameQuality){
+    public static String generateSwordHistory(Trait trait, String weaponType, Gender gender, NameQuality nameQuality) {
         StringBuilder name = new StringBuilder();
 
         int type = rand.nextInt(2);
         //type 0: Name’s Trait Weapon + of Place
-        if(type == 0){
+        if (type < 1) {
             //full name
-            if(rand.nextBoolean()){
+            if (rand.nextBoolean()) {
                 name.append(getFirstName(gender) + " ");
             }
             //last name
             name.append(getLastName() + "'s ");
 
             //trait
-            if(rand.nextBoolean()){
+            if (rand.nextBoolean()) {
                 name.append(getIngTrait(trait) + " ");
             }
 
@@ -120,45 +138,43 @@ public class HistoryGenerator {
             name.append(weaponType);
 
             //place
-            if(rand.nextInt(5) == 2){
+            if (rand.nextInt(5) == 2) {
                 name.append(" of " + getPlace());
             }
-        //type 1: Name Type of Trait
-        } else if (type == 1){
-            if(rand.nextBoolean()){
-                if(rand.nextBoolean()){
-                    name.append("The " + getLastName() + " Family ");
-                } else {
-                    name.append(getFancyName(gender, nameQuality) + " ");
-                }
+            //type 1: Name Type of Trait
+        } else {
+            if (rand.nextBoolean()) {
+                name.append("The " + getLastName() + " Family ");
+            } else {
+                name.append(getFancyName(gender, nameQuality) + " ");
+            }
 
-                name.append(weaponType + " ");
-                if(rand.nextBoolean()){
-                    name.append(" of" + getTrait(trait));
-                }
+            name.append(weaponType);
+            if (rand.nextBoolean()) {
+                name.append(" of" + getTrait(trait));
             }
         }
         return name.toString();
     }
 
-    private String getPlace() {
+    private static String getPlace() {
         return Names.townNames[rand.nextInt(Names.townNames.length)];
     }
 
-    public String generateArmourHistory(){
+    public static String generateArmourHistory() {
         return null;
     }
 
-    public String generateArtifactHistory(){
+    public static String generateArtifactHistory() {
         return null;
     }
 
-    public String getFancyName(Gender gender, NameQuality nameQuality){
+    public static String getFancyName(Gender gender, NameQuality nameQuality) {
         String name = "";
-        switch (nameQuality){
+        switch (nameQuality) {
             case KING:
-                if (rand.nextInt(100) < 60){
-                    switch (gender){
+                if (rand.nextInt(100) < 60) {
+                    switch (gender) {
                         case MALE:
                             name = "King ";
                             break;
@@ -166,13 +182,13 @@ public class HistoryGenerator {
                             name = "Queen ";
                             break;
                     }
-                } else if (rand.nextInt(100) < 60){
+                } else if (rand.nextInt(100) < 60) {
                     name = "Warlord ";
                 }
                 break;
             case NOBLE:
-                if (rand.nextInt(100) < 35){
-                    switch (gender){
+                if (rand.nextInt(100) < 35) {
+                    switch (gender) {
                         case MALE:
                             name = "Sir ";
                             break;
@@ -180,14 +196,14 @@ public class HistoryGenerator {
                             name = "Mis ";
                             break;
                     }
-                } else if(rand.nextInt(100) < 40){
+                } else if (rand.nextInt(100) < 40) {
                     name = "Nobel ";
                 }
                 break;
             case MERCHANT:
-                if(rand.nextInt(100) < 40){
+                if (rand.nextInt(100) < 40) {
                     name = "Smith ";
-                } else if(rand.nextInt(100) < 40){
+                } else if (rand.nextInt(100) < 40) {
                     name = "Trader ";
                 }
                 break;
@@ -196,8 +212,8 @@ public class HistoryGenerator {
         return name + getFirstName(gender) + " " + getLastName();
     }
 
-    public String getFirstName(Gender gender){
-        switch (gender){
+    public static String getFirstName(Gender gender) {
+        switch (gender) {
             case MALE:
                 return Names.firstNamesM[rand.nextInt(Names.firstNamesM.length)];
             case FEMALE:
@@ -206,9 +222,9 @@ public class HistoryGenerator {
         return "James";
     }
 
-    public String getLastName(){
+    public static String getLastName() {
         String lastName = Names.lastNames[rand.nextInt(Names.lastNames.length)];
-        lastName = (lastName.charAt(0)+"").toUpperCase() + lastName.substring(1, lastName.length()).toLowerCase();
+        lastName = (lastName.charAt(0) + "").toUpperCase() + lastName.substring(1, lastName.length()).toLowerCase();
         return lastName;
     }
 

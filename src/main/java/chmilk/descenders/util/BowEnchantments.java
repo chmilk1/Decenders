@@ -27,6 +27,108 @@ public class BowEnchantments {
     int punch; //Punch
     int qc; //Quick Charge
 
+    public BowEnchantments(int mend, int unbreaking, int unbreakable, int vanish, int flame, int inf, int multi, int pierce, int power, int punch, int qc) {
+        this.mend = mend;
+        this.unbreaking = unbreaking;
+        this.unbreakable = unbreakable;
+        this.vanish = vanish;
+        this.flame = flame;
+        this.inf = inf;
+        this.multi = multi;
+        this.pierce = pierce;
+        this.power = power;
+        this.punch = punch;
+        this.qc = qc;
+    }
+
+    public int getMend() {
+        return mend;
+    }
+
+    public void setMend(int mend) {
+        this.mend = mend;
+    }
+
+    public int getUnbreaking() {
+        return unbreaking;
+    }
+
+    public void setUnbreaking(int unbreaking) {
+        this.unbreaking = unbreaking;
+    }
+
+    public int getUnbreakable() {
+        return unbreakable;
+    }
+
+    public void setUnbreakable(int unbreakable) {
+        this.unbreakable = unbreakable;
+    }
+
+    public int getVanish() {
+        return vanish;
+    }
+
+    public void setVanish(int vanish) {
+        this.vanish = vanish;
+    }
+
+    public int getFlame() {
+        return flame;
+    }
+
+    public void setFlame(int flame) {
+        this.flame = flame;
+    }
+
+    public int getInf() {
+        return inf;
+    }
+
+    public void setInf(int inf) {
+        this.inf = inf;
+    }
+
+    public int getMulti() {
+        return multi;
+    }
+
+    public void setMulti(int multi) {
+        this.multi = multi;
+    }
+
+    public int getPierce() {
+        return pierce;
+    }
+
+    public void setPierce(int pierce) {
+        this.pierce = pierce;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getPunch() {
+        return punch;
+    }
+
+    public void setPunch(int punch) {
+        this.punch = punch;
+    }
+
+    public int getQc() {
+        return qc;
+    }
+
+    public void setQc(int qc) {
+        this.qc = qc;
+    }
+
     public void applyEnchants(ItemMeta meta, List<String> lore){
         //general
         if(mend > 0){

@@ -137,7 +137,7 @@ public class Descenders extends JavaPlugin {
              */
             else if(label.equalsIgnoreCase("summonthegodslayer") && sender.isOp()) {
                 player.getWorld().strikeLightningEffect(player.getLocation());
-                player.getInventory().addItem(ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 1, true, new WeaponEnchantments(5,5,5,5,5,5,5,5,5,5,5,5)));
+                player.getInventory().addItem(ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 1, true, new WeaponEnchantments(5,5,5,5,5,5,5,5,5,5,5,5,5)));
                 player.getInventory().addItem(ItemBuilder.createArmour("Infini-Plate",null,Material.IRON_CHESTPLATE,200,true, null));
                 return true;
             }
@@ -147,7 +147,7 @@ public class Descenders extends JavaPlugin {
                 return true;
             }
             else if(label.equalsIgnoreCase("summonfunnystick") && sender.isOp()) {
-                player.getInventory().addItem(ItemBuilder.createWeapon("HEHEHEHA",null,Material.STICK,.5,8,false,new WeaponEnchantments(0,0,0,0,0,0,10000,0,0,0,0,0)));
+                player.getInventory().addItem(ItemBuilder.createWeapon("HEHEHEHA",null,Material.STICK,.5,8,false,new WeaponEnchantments(0,0,0,0,0,0,10000,0,0,0,0,0,0)));
                 return true;
             }
             /*
