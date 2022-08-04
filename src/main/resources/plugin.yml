@@ -42,3 +42,6 @@ commands:
   clearDungeon:
     description: "clears the loot spots in a dungeon"
     usage: "Usage /<command> [dungeon name]"
+  kit:
+    description: "allows you to redeem a starter kit"
+    usage: "Usage /<command> [kit name]"

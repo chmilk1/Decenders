@@ -8,6 +8,8 @@ package chmilk.descenders;
 import chmilk.descenders.loot.LootBarrel;
 import chmilk.descenders.loot.LootChest;
 import chmilk.descenders.util.ItemBuilder;
+import chmilk.descenders.util.Kits;
+import chmilk.descenders.util.WeaponEnchantments;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Barrel;
@@ -15,6 +17,7 @@ import org.bukkit.block.Chest;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -129,14 +132,36 @@ public class Descenders extends JavaPlugin {
                 sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
                 return true;
             }
+            /*
+             * Testing items
+             */
             else if(label.equalsIgnoreCase("summonthegodslayer") && sender.isOp()) {
                 player.getWorld().strikeLightningEffect(player.getLocation());
-                 player.getInventory().addItem(ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 1, true, true));
+                player.getInventory().addItem(ItemBuilder.createWeapon("God-Slayer", null, Material.IRON_AXE, 200, 1, true, new WeaponEnchantments(5,5,5,5,5,5,5,5,5,5,5,5)));
+                player.getInventory().addItem(ItemBuilder.createArmour("Infini-Plate",null,Material.IRON_CHESTPLATE,6,true, null));
                 return true;
             }
             else if(label.equalsIgnoreCase("summontrident") && sender.isOp()) {
                 player.getWorld().strikeLightningEffect(player.getLocation());
-                player.getInventory().addItem(ItemBuilder.createTrident("Neptunes Trident", null, 200, 3, true, true, true));
+                player.getInventory().addItem(ItemBuilder.createTrident("Neptunes Trident", null, 200, 3, true, true));
+                return true;
+            }
+            else if(label.equalsIgnoreCase("summonfunnystick") && sender.isOp()) {
+                player.getInventory().addItem(ItemBuilder.createWeapon("HEHEHEHA",null,Material.STICK,.5,8,false,new WeaponEnchantments(0,0,0,0,0,0,10000,0,0,0,0,0)));
+                return true;
+            }
+            /*
+             * Kits system
+             */
+            else if(label.equalsIgnoreCase("kit")) {
+                if (args.length <= 0){
+                    sender.sendMessage("Kits: starter");
+                    return true;
+                } else if(args[0].equalsIgnoreCase("starter")) {
+                    //calls the kits classes give method
+                    Kits.giveStarter(player);
+                }
+                sender.sendMessage("Kits: starter");
                 return true;
             }
         }
