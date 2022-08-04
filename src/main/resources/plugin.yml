@@ -45,3 +45,6 @@ commands:
   kit:
     description: "allows you to redeem a starter kit"
     usage: "Usage /<command> [kit name]"
+  testSword:
+    description: "tests the loot generator"
+    usage: "Usage /<command> [amount] [lootpoints]"

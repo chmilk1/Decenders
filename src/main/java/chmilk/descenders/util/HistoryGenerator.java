@@ -121,7 +121,7 @@ public class HistoryGenerator {
 
         int type = rand.nextInt(2);
         //type 0: Name’s Trait Weapon + of Place
-        if (type < 1) {
+        if (type == 0) {
             //full name
             if (rand.nextBoolean()) {
                 name.append(getFirstName(gender) + " ");
@@ -151,7 +151,7 @@ public class HistoryGenerator {
 
             name.append(weaponType);
             if (rand.nextBoolean()) {
-                name.append(" of" + getTrait(trait));
+                name.append(" of " + getTrait(trait));
             }
         }
         return name.toString();

@@ -7,6 +7,7 @@ package chmilk.descenders;
 
 import chmilk.descenders.loot.LootBarrel;
 import chmilk.descenders.loot.LootChest;
+import chmilk.descenders.loot.LootManager;
 import chmilk.descenders.util.ItemBuilder;
 import chmilk.descenders.util.Kits;
 import chmilk.descenders.util.WeaponEnchantments;
@@ -149,6 +150,26 @@ public class Descenders extends JavaPlugin {
             else if(label.equalsIgnoreCase("summonfunnystick") && sender.isOp()) {
                 player.getInventory().addItem(ItemBuilder.createWeapon("HEHEHEHA",null,Material.STICK,.5,8,false,new WeaponEnchantments(0,0,0,0,0,0,10000,0,0,0,0,0,0)));
                 return true;
+            }
+            /*
+             * generates loot
+             */
+            else if(label.equalsIgnoreCase("testSword") && sender.isOp()) {
+                if(args.length == 0){
+                    player.getInventory().addItem(LootManager.createWeapon(100,1));
+                    return true;
+                } else if(args.length == 1) {
+                    for(int i = 0; i<Integer.parseInt(args[0]);i++){
+                        player.getInventory().addItem(LootManager.createWeapon(100,1));
+                    }
+                    return true;
+                } else if(args.length == 2) {
+                    for(int i = 0; i<Integer.parseInt(args[0]);i++){
+                        player.getInventory().addItem(LootManager.createWeapon(Integer.parseInt(args[1]),1));
+                    }
+                    return true;
+                }
+                return false;
             }
             /*
              * Kits system
