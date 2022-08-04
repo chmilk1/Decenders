@@ -166,7 +166,7 @@ public class ItemBuilder {
             enchant.applyEnchants(meta, lore);
         }
 
-        AttributeModifier armourA = new AttributeModifier("generic.armour", armour, AttributeModifier.Operation.MULTIPLY_SCALAR_1);
+        AttributeModifier armourA = new AttributeModifier("generic.armour", armour, AttributeModifier.Operation.ADD_NUMBER);
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + armour + " Armour Points");
 
         meta.setLore(lore);
