@@ -28,6 +28,22 @@ public class ArmourEnchantments {
     int resp; //Respiration
     int thorns; //Thorns
 
+    public ArmourEnchantments(int mend, int unbreaking, int unbreakable, int vanish, int aqua, int blast, int strider, int falling, int fire, int proj, int prot, int resp, int thorns) {
+        this.mend = mend;
+        this.unbreaking = unbreaking;
+        this.unbreakable = unbreakable;
+        this.vanish = vanish;
+        this.aqua = aqua;
+        this.blast = blast;
+        this.strider = strider;
+        this.falling = falling;
+        this.fire = fire;
+        this.proj = proj;
+        this.prot = prot;
+        this.resp = resp;
+        this.thorns = thorns;
+    }
+
     public void applyEnchants(ItemMeta meta, List<String> lore){
         //general
         if(mend > 0){

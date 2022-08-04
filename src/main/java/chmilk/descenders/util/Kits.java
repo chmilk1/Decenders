@@ -7,6 +7,7 @@ package chmilk.descenders.util;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 public class Kits {
@@ -15,11 +16,12 @@ public class Kits {
                 (player.getDisplayName() + "'s Training Sword"),null, Material.WOODEN_SWORD,5,2,false,
                 new WeaponEnchantments(0,0,1,0,0,0,0,0,0,0,0,0)));
 
+        player.getInventory().addItem(ItemBuilder.createBow(player.getDisplayName() + "'s Basic Crossbow" ,null,true,false,null));
+
         player.getInventory().addItem(new ItemStack(Material.ARROW, 12));
-        //TODO: Bow
 
         player.getInventory().addItem(ItemBuilder.createArmour(
-                "Starter Chestplate",null,Material.CHAINMAIL_CHESTPLATE,3,false,null));
+                "Starter Chestplate",null,Material.CHAINMAIL_CHESTPLATE,5,false,null));
         player.getInventory().addItem(ItemBuilder.createArmour(
                 "Starter Leggings",null,Material.LEATHER_LEGGINGS,2,false,null));
         player.getInventory().addItem(ItemBuilder.createArmour(

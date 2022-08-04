@@ -170,7 +170,7 @@ public class ItemBuilder {
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + armour + " Armour Points");
 
         meta.setLore(lore);
-        //meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, armourA);
@@ -178,11 +178,39 @@ public class ItemBuilder {
         return item;
     }
 
-    public static ItemStack createArtifact(){
-        return null;
+    public static ItemStack createBow(String Name, List<String> lore, boolean crossy, boolean enchanted, BowEnchantments enchant){
+        ItemStack item;
+        if (crossy) {
+            item = new ItemStack(Material.CROSSBOW);
+        } else {
+            item = new ItemStack(Material.BOW);
+        }
+
+        ItemMeta meta = item.getItemMeta();
+        if(lore == null){
+            lore = new ArrayList<String>();
+        } else {
+            lore.add("");
+        }
+        meta.setDisplayName(ChatColor.RESET + Name);
+
+        if(enchanted){
+            meta.addEnchant(Enchantment.LUCK,1, true);
+        }
+
+        if(enchant != null){
+            enchant.applyEnchants(meta, lore);
+        }
+
+        meta.setLore(lore);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        item.setItemMeta(meta);
+        return item;
     }
 
-    public static ItemStack simpleLoot(){
+    public static ItemStack createArtifact(){
         return null;
     }
 }
