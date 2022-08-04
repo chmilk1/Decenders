@@ -1,2 +1,2 @@
 # Decenders
- Minecraft turned MMO dungen crawler. Enter dungens that create loot programaticly and come out with filled coffers.
+ Minecraft turned RPG dungen crawler. Enter dungens that create loot programaticly and come out with filled coffers. Started Oct 27, 2020.
