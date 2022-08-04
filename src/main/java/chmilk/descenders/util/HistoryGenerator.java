@@ -124,10 +124,13 @@ public class HistoryGenerator {
         if (type == 0) {
             //full name
             if (rand.nextBoolean()) {
-                name.append(getFirstName(gender) + " ");
+                name.append(getFirstName(gender) + "'s ");
+            } else if (rand.nextBoolean()) {
+                name.append(getLastName() + "'s ");
+            } else {
+                name.append(getFirstName(gender) + " " + getLastName() + "'s ");
             }
             //last name
-            name.append(getLastName() + "'s ");
 
             //trait
             if (rand.nextBoolean()) {
@@ -146,7 +149,7 @@ public class HistoryGenerator {
             if (rand.nextBoolean()) {
                 name.append("The " + getLastName() + " Family ");
             } else {
-                name.append(getFancyName(gender, nameQuality) + " ");
+                name.append(getFancyName(gender, nameQuality) + "'s ");
             }
 
             name.append(weaponType);
@@ -208,6 +211,12 @@ public class HistoryGenerator {
                 }
                 break;
             case PEASANT:
+                if (rand.nextInt(100) < 40) {
+                    name = "Soldier ";
+                } else if (rand.nextInt(100) < 40) {
+                    name = "Farmer ";
+                }
+                break;
         }
         return name + getFirstName(gender) + " " + getLastName();
     }

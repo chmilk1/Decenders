@@ -219,31 +219,31 @@ public class WeaponEnchantments{
             setMend(1);
             return 2;
         } else if (roll < 20) {
-            setUnbreaking((int) ((roll-5d)/15)*4+1);
+            setUnbreaking((int) ((roll-5d)/15)*4+1 + getUnbreaking());
             return 0;
         } else if (roll < 25) {
             setBaneofarth(roll-20);
             return 0;
         } else if (roll < 30) {
-            setSmite((int) ((roll-25d)/5)*3+1);
+            setSmite((int)(((roll-25d)/5d)*3d+1));
             return 0;
         } else if (roll < 50) {
-            setSharp((int) ((roll-30d)/20)*5+1);
+            setSharp((int)( ((roll-30d)/20d)*5d+1) + getSharp());
             return 5;
         } else if (roll < 60) {
-            setKnock((int) ((roll-50d)/10)*4+1);
+            setKnock((int) (((roll-50d)/10d)*4d+1) + getKnock());
             return 0;
         } else if (roll < 70) {
-            setFire((int) ((roll-60d)/10)*2+1);
+            setFire((int) (((roll-60d)/10d)*2d+1));
             return 2;
         } else if (roll < 80) {
-            setFrost((int) ((roll-70d)/10)*2+1);
+            setFrost((int) (((roll-70d)/10d)*2d+1));
             return 0;
         } else if (roll < 90) {
-            setPoison((int) ((roll-80d)/10)*2+1);
+            setPoison((int) (((roll-80d)/10d)*2d+1));
             return 2;
         } else if (roll < 95) {
-            setWithering((int) ((roll-90d)/5)*2+1);
+            setWithering((int) (((roll-90d)/5d)*2d+1));
             return 2;
         } else {
             setVanish(1);

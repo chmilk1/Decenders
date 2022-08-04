@@ -16,8 +16,8 @@ import java.util.Random;
 public class LootManager {
     public static Random rand = new Random();
     
-    public static final double ENCHANT_CHANCE = 50;
-    public static final double ENCHANT_DECAY = 0.4;
+    public static final double ENCHANT_CHANCE = 60;
+    public static final double ENCHANT_DECAY = 0.7;
     public static final double ENCHANT_WEAPON_DEBUF = 1.0;
     public static final double ENCHANT_RANGED_DEBUF = 0.7;
     public static final double ENCHANT_ARMOUR_DEBUF = 0.7;
@@ -33,7 +33,7 @@ public class LootManager {
         int enchantments = 0;
         boolean enchantDone = false;
         while(!enchantDone){
-            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,1 + enchantments) * ENCHANT_WEAPON_DEBUF){
+            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_WEAPON_DEBUF){
                 enchantments += 1;
                 lootPoints -= ENCHANT_WEAPON_LP + weapEnch.rollEnchant(rand.nextInt(100));
             } else {
@@ -68,7 +68,7 @@ public class LootManager {
         int enchantments = 0;
         boolean enchantDone = false;
         while(!enchantDone){
-            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,1 + enchantments) * ENCHANT_ARMOUR_DEBUF){
+            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_ARMOUR_DEBUF){
                 enchantments += 1;
                 lootPoints -= ENCHANT_ARMOUR_LP;
             } else {
