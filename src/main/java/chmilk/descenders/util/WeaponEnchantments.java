@@ -247,7 +247,7 @@ public class WeaponEnchantments{
             return 2;
         } else {
             setVanish(1);
-            return -10;
+            return -20;
         }
     }
 

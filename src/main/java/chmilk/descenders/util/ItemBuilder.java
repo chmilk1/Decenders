@@ -65,7 +65,7 @@ public class ItemBuilder {
         }
 
         AttributeModifier attackDmgA = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", attackDmg-1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Damage " + attackDmg);
+        lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Damage " + ((int)attackDmg));
 
         AttributeModifier attackSpeedA = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", attackSpeed-4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "Attack Speed " + attackSpeed);

@@ -14,6 +14,10 @@ public class HistoryGenerator {
         BLUNT, SHARP, FLAMING, COLD, PIERCE, POISION
     }
 
+    public static enum WeaponType {
+        SWORD, DAGGER, PICK, AXE, SPADE
+    }
+
     public static String getIngTrait(Trait trait) {
         switch (trait) {
             case FLAMING:
@@ -104,6 +108,36 @@ public class HistoryGenerator {
                 return "Armour Piercing";
         }
         return "";
+    }
+
+    public static String getWeapType(WeaponType type) {
+        switch (type) {
+            case SWORD:
+                switch (rand.nextInt(3)) {
+                    case 0:
+                        return "Sword";
+                    case 1:
+                        return "Blade";
+                    case 2:
+                        return "Rapier";
+                }
+            case PICK:
+                return "Pickaxe";
+            case DAGGER:
+                switch (rand.nextInt(3)) {
+                    case 0:
+                        return "Dagger";
+                    case 1:
+                        return "Shiv";
+                    case 2:
+                        return "Knife";
+                }
+            case SPADE:
+                return "Shovel";
+            case AXE:
+                return "Axe";
+        }
+        return "Weapon";
     }
 
 

@@ -14,6 +14,7 @@ chmilk\descenders\util\Names.class
 chmilk\descenders\playerinfo\HealthManager.class
 chmilk\descenders\loot\LootManager.class
 chmilk\descenders\util\HistoryGenerator.class
+chmilk\descenders\util\HistoryGenerator$WeaponType.class
 chmilk\descenders\loot\LootContainer.class
 chmilk\descenders\loot\LootBarrel.class
 chmilk\descenders\playerinfo\PlayerStats.class
