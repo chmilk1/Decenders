@@ -32,7 +32,7 @@ public class LootManager {
     public static final double DAMAGE_PICK_MULTI = 1.8;
     public static final double DAMAGE_DAGGER_MULTI = .5;
     public static final double DAMAGE_SPADE_MULTI = 1.25;
-    public static final double DAMAGE_LP_CONVERT = 50;
+    public static final double DAMAGE_LP_CONVERT = 55;
 
     public static final double DAMAGE_GOLD = 1.4;
     public static final double DAMAGE_DIAMOND = 1.2;
