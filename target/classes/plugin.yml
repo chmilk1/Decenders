@@ -7,6 +7,7 @@ api-version: 1.16
 commands:
   fillchest:
     description: "test command to fill a chest"
+    usage: "Usage /<command> [lootpoints]"
   emptychest:
     description: "test command to empty a chest"
   summonthegodslayer:

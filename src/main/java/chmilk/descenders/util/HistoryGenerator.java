@@ -8,7 +8,7 @@ package chmilk.descenders.util;
 import java.util.Random;
 
 public class HistoryGenerator {
-    static Random rand = new Random();
+    static Random rand = RandomContainer.rand;
 
     public static enum Trait {
         BLUNT, SHARP, FLAMING, COLD, PIERCE, POISION

@@ -65,7 +65,12 @@ public class Descenders extends JavaPlugin {
             if (label.equalsIgnoreCase("fillchest") && sender.isOp()) {
                 if(player.getTargetBlock(null,5).getBlockData().getMaterial().equals(Material.CHEST)){
                     LootChest lc = new LootChest((Chest) player.getTargetBlock(null,5).getState());
-                    lc.addLoot(1);
+
+                    if(args[0] != null){
+                        lc.addLoot(Integer.parseInt(args[0]));
+                    } else {
+                        lc.addLoot(500);
+                    }
                     sender.sendMessage(ChatColor.YELLOW + "Chest filled");
                     return true;
                 } else if (player.getTargetBlock(null, 5).getBlockData().getMaterial().equals(Material.BARREL)){

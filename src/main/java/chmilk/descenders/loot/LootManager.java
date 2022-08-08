@@ -5,18 +5,20 @@
 
 package chmilk.descenders.loot;
 
-import chmilk.descenders.util.HistoryGenerator;
-import chmilk.descenders.util.ItemBuilder;
-import chmilk.descenders.util.WeaponEnchantments;
+import chmilk.descenders.util.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.block.data.type.Switch;
 import org.bukkit.inventory.ItemStack;
+import org.checkerframework.checker.units.qual.A;
 
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class LootManager {
-    public static Random rand = new Random();
+    public static Random rand = RandomContainer.rand;
     
     public static final double ENCHANT_CHANCE = 64;
     public static final double ENCHANT_DECAY = 0.7;
@@ -24,6 +26,7 @@ public class LootManager {
     public static final double ENCHANT_RANGED_DEBUF = 0.7;
     public static final double ENCHANT_ARMOUR_DEBUF = 0.7;
     public static final double ENCHANT_LP_CHANCE = 0.01;
+    public static final double ENCHANT_LP_MAX = 1.5;
 
     public static final int ENCHANT_WEAPON_LP = 10;
     public static final int ENCHANT_RANGED_LP = 15;
@@ -48,22 +51,38 @@ public class LootManager {
 
     public static final double SWING_WOOD = .95;
 
+    public static final int SIMPLELOOT_GOLDLP = 2;
+    public static final int SIMPLELOOT_FOODPERLP = 24;
+    public static final double SIMPLELOOT_FOOD_BREAD = 1;
+    public static final double SIMPLELOOT_FOOD_MELLON = .6;
+    public static final double SIMPLELOOT_FOOD_STEAK = 2;
+    public static final double SIMPLELOOT_FOOD_PORK = 2;
+    public static final double SIMPLELOOT_FOOD_APPLE = 1;
+
     public static ItemStack createWeapon(int lootPoints, int power){
 
         String rarity = rarityChatTags(lootPoints);
+        //TODO: remove debug flag for mem optimization
+        ArrayList<String> lore = null;
+        if(GlobalFlags.LOOTPOINTS_DEBUG){
+            lore = new ArrayList<>();
+            lore.add("LP: "+lootPoints);
+        }
 
         //deciding enchantments
         WeaponEnchantments weapEnch = new WeaponEnchantments();
         int enchantments = 0;
         boolean enchantDone = false;
         while(!enchantDone && lootPoints > 0){
-            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_WEAPON_DEBUF * (lootPoints * ENCHANT_LP_CHANCE)){
+            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_WEAPON_DEBUF * Math.min(lootPoints * ENCHANT_LP_CHANCE,ENCHANT_LP_MAX)){
                 enchantments += 1;
                 lootPoints -= ENCHANT_WEAPON_LP + weapEnch.rollEnchant(rand.nextInt(100));
             } else {
                 enchantDone = true;
             }
         }
+
+        //
 
         //weapon types
         double damage = DAMAGE_BASE;
@@ -230,48 +249,46 @@ public class LootManager {
 
         return ItemBuilder.createWeapon(
                 rarity + HistoryGenerator.generateSwordHistory(weapEnch.getTrait(),weaponType, HistoryGenerator.Gender.MALE, HistoryGenerator.NameQuality.NOBLE),
-                null, mat,damage,swing,false,weapEnch);
+                lore, mat,damage,swing,false,weapEnch);
     }
 
     public static ItemStack createRanged(int lootPoints, int power){
-
-        //deciding enchantments amount
-        int enchantments = 0;
-        boolean enchantDone = false;
-        while(!enchantDone){
-            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,1 + enchantments) * ENCHANT_RANGED_DEBUF){
-                enchantments += 1;
-                lootPoints -= ENCHANT_RANGED_LP;
-            } else {
-                enchantDone = true;
-            }
-        }
-
-        return null;
+        return ItemBuilder.createBow("LP:" + lootPoints,null,false,false,null);
     }
 
     public static ItemStack createArmour(int lootPoints, int power){
-        //deciding enchantments amount
-        int enchantments = 0;
-        boolean enchantDone = false;
-        while(!enchantDone){
-            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_ARMOUR_DEBUF){
-                enchantments += 1;
-                lootPoints -= ENCHANT_ARMOUR_LP;
-            } else {
-                enchantDone = true;
-            }
-        }
-
-        return null;
+        return ItemBuilder.createArmour("LP:" + lootPoints,
+                null,Material.LEATHER_BOOTS,4,false,null);
     }
 
     public static ItemStack createArtifact(int lootPoints, int power){
-        return null;
+        return new ItemStack(Material.DIAMOND);
     }
 
     public static ItemStack simpleLoot(int lootPoints, int power){
-        return null;
+        switch (rand.nextInt(3)){
+            case 0: //gold
+            case 1:
+                if(lootPoints < 9 * SIMPLELOOT_GOLDLP){
+                    return new ItemStack(Material.GOLD_NUGGET,(lootPoints/SIMPLELOOT_GOLDLP));
+                } else {
+                    return new ItemStack(Material.GOLD_INGOT,(lootPoints/SIMPLELOOT_GOLDLP/9));
+                }
+            case 2: //food
+                switch (rand.nextInt(5)){
+                    case 0: //bread
+                        return new ItemStack(Material.BREAD,(int)(lootPoints/SIMPLELOOT_FOODPERLP/SIMPLELOOT_FOOD_BREAD));
+                    case 1: //mellon
+                        return new ItemStack(Material.MELON_SLICE,(int)(lootPoints/SIMPLELOOT_FOODPERLP/SIMPLELOOT_FOOD_MELLON));
+                    case 2: //apple
+                        return new ItemStack(Material.APPLE,(int)(lootPoints/SIMPLELOOT_FOODPERLP/SIMPLELOOT_FOOD_APPLE));
+                    case 3: //steak
+                        return new ItemStack(Material.COOKED_BEEF,(int)(lootPoints/SIMPLELOOT_FOODPERLP/SIMPLELOOT_FOOD_STEAK));
+                    case 4: //pork
+                        return new ItemStack(Material.COOKED_PORKCHOP,(int)(lootPoints/SIMPLELOOT_FOODPERLP/SIMPLELOOT_FOOD_PORK));
+                }
+        }
+        return new ItemStack(Material.GOLD_INGOT,1);
     }
 
     public static final int RARITY_UNCOMMON = 60;
