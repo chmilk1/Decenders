@@ -65,7 +65,7 @@ public class LootManager {
         //TODO: remove debug flag for mem optimization
         ArrayList<String> lore = null;
         if(GlobalFlags.LOOTPOINTS_DEBUG){
-            lore = new ArrayList<>();
+            lore = new ArrayList<String>();
             lore.add("LP: "+lootPoints);
         }
 

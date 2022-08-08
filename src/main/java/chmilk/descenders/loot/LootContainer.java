@@ -15,7 +15,7 @@ public abstract class LootContainer extends Loot {
 
     public static Random rand = RandomContainer.rand;
 
-    public static final int LOOTPOINTS_DEFAULT_MAX = 120;
+    public static final int LOOTPOINTS_DEFAULT_MAX = 110;
     public static final double LOOTPOINTS_RARITY_MULTIPLIER = 1.5;
 
     abstract public void addItem(ItemStack item);
@@ -24,14 +24,16 @@ public abstract class LootContainer extends Loot {
     public int addLoot(int lootPoints){
         int localLP;
         int type = 0;
-        while(lootPoints > 10){
+        int retries = 0;
+        while(lootPoints > 0){
             localLP = rand.nextInt(Math.min(LOOTPOINTS_DEFAULT_MAX,lootPoints));
-            for(int i = 0; i < 3; i++){
+            retries = 1 + rand.nextInt(3);
+            for(int i = 0; i < 2 && localLP < lootPoints; i++){
                 if(rand.nextBoolean()){
-                    localLP = (int) (localLP * LOOTPOINTS_RARITY_MULTIPLIER);
+                    localLP = Math.min((int)(localLP * LOOTPOINTS_RARITY_MULTIPLIER),lootPoints);
                 }
             }
-            type = rand.nextInt(7);
+            type = rand.nextInt(6);//7 normally, artifacts disabled
 
             if(type < 2){
                 addItem(LootManager.createWeapon(localLP,0));
@@ -39,8 +41,8 @@ public abstract class LootContainer extends Loot {
                 addItem(LootManager.createArmour(localLP,0));
             } else if(type == 3) {
                 addItem(LootManager.createRanged(localLP,0));
-            } else if(type == 4) {
-                addItem(LootManager.createArtifact(localLP,0));
+            //} else if(type == 4) {
+            //    addItem(LootManager.createArtifact(localLP,0));
             } else {
                 addItem(LootManager.simpleLoot(localLP,0));
             }

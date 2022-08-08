@@ -127,7 +127,7 @@ public class Dungeon {
 
     public void addLoot(){
         for (Loot loot: lootSpots) {
-            loot.addLoot(350);
+            loot.addLoot(250);
         }
     }
 
