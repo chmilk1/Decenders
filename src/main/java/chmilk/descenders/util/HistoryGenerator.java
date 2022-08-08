@@ -122,7 +122,11 @@ public class HistoryGenerator {
                         return "Rapier";
                 }
             case PICK:
-                return "Pickaxe";
+                if(rand.nextBoolean()){
+                    return "Pick";
+                } else {
+                    return "Pickaxe";
+                }
             case DAGGER:
                 switch (rand.nextInt(3)) {
                     case 0:
@@ -133,7 +137,11 @@ public class HistoryGenerator {
                         return "Knife";
                 }
             case SPADE:
-                return "Shovel";
+                if(rand.nextBoolean()){
+                    return "Spade";
+                } else {
+                    return "Shovel";
+                }
             case AXE:
                 return "Axe";
         }
@@ -178,8 +186,13 @@ public class HistoryGenerator {
             if (rand.nextInt(5) == 2) {
                 name.append(" of " + getPlace());
             }
-            //type 1: Name Type of Trait
-        } else {
+
+        } else if(type == 1) { //type 1: Trait Type simple
+            name.append(getTrait(trait));
+            name.append(" ");
+            name.append(weaponType);
+
+        } else { //type 2: Name Type of Trait
             if (rand.nextBoolean()) {
                 name.append("The " + getLastName() + " Family ");
             } else {
