@@ -66,7 +66,8 @@ public class LootManager {
         ArrayList<String> lore = null;
         if(GlobalFlags.LOOTPOINTS_DEBUG){
             lore = new ArrayList<String>();
-            lore.add("LP: "+lootPoints);
+            lore.add(rarityNames(lootPoints));
+            lore.add(ChatColor.ITALIC + "LP: "+lootPoints);
         }
 
         //deciding enchantments
@@ -297,13 +298,25 @@ public class LootManager {
 
     public static String rarityChatTags(int lootPoints){
         if(lootPoints > RARITY_EPIC){
-            return ChatColor.RESET + "" + ChatColor.RED;
+            return ChatColor.RESET.toString() + ChatColor.RED;
         } else if(lootPoints > RARITY_RARE){
-            return ChatColor.RESET + "" + ChatColor.GOLD;
+            return ChatColor.RESET.toString() + ChatColor.GOLD;
         } else if(lootPoints > RARITY_UNCOMMON){
-            return ChatColor.RESET + "" + ChatColor.AQUA;
+            return ChatColor.RESET.toString() + ChatColor.AQUA;
         } else {
             return ChatColor.RESET.toString() + ChatColor.WHITE;
+        }
+    }
+
+    public static String rarityNames(int lootPoints){
+        if(lootPoints > RARITY_EPIC){
+            return ChatColor.ITALIC.toString() + ChatColor.RED + "Epic";
+        } else if(lootPoints > RARITY_RARE){
+            return ChatColor.ITALIC.toString() + ChatColor.GOLD +"Rare";
+        } else if(lootPoints > RARITY_UNCOMMON){
+            return ChatColor.ITALIC.toString() + ChatColor.AQUA + "Uncommon";
+        } else {
+            return ChatColor.ITALIC.toString() + ChatColor.WHITE +"Normal";
         }
     }
 }

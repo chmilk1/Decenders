@@ -25,7 +25,7 @@ public abstract class LootContainer extends Loot {
         int localLP;
         int type = 0;
         int retries = 0;
-        while(lootPoints > 0){
+        while(lootPoints > 10){
             localLP = rand.nextInt(Math.min(LOOTPOINTS_DEFAULT_MAX,lootPoints));
             retries = 1 + rand.nextInt(3);
             for(int i = 0; i < 2 && localLP < lootPoints; i++){
