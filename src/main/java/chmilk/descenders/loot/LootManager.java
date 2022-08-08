@@ -8,6 +8,7 @@ package chmilk.descenders.loot;
 import chmilk.descenders.util.HistoryGenerator;
 import chmilk.descenders.util.ItemBuilder;
 import chmilk.descenders.util.WeaponEnchantments;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,6 +23,7 @@ public class LootManager {
     public static final double ENCHANT_WEAPON_DEBUF = 1.0;
     public static final double ENCHANT_RANGED_DEBUF = 0.7;
     public static final double ENCHANT_ARMOUR_DEBUF = 0.7;
+    public static final double ENCHANT_LP_CHANCE = 0.01;
 
     public static final int ENCHANT_WEAPON_LP = 10;
     public static final int ENCHANT_RANGED_LP = 15;
@@ -48,12 +50,14 @@ public class LootManager {
 
     public static ItemStack createWeapon(int lootPoints, int power){
 
+        String rarity = rarityChatTags(lootPoints);
+
         //deciding enchantments
         WeaponEnchantments weapEnch = new WeaponEnchantments();
         int enchantments = 0;
         boolean enchantDone = false;
-        while(!enchantDone){
-            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_WEAPON_DEBUF){
+        while(!enchantDone && lootPoints > 0){
+            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_WEAPON_DEBUF * (lootPoints * ENCHANT_LP_CHANCE)){
                 enchantments += 1;
                 lootPoints -= ENCHANT_WEAPON_LP + weapEnch.rollEnchant(rand.nextInt(100));
             } else {
@@ -215,16 +219,17 @@ public class LootManager {
             }
         }
 
-        int damageLP = (int) (lootPoints * rand.nextDouble());
-        lootPoints -= damageLP;
-        damage += ((damageLP)/DAMAGE_LP_CONVERT);
+        if (lootPoints > 0) {
+            int damageLP = (int) (lootPoints * rand.nextDouble());
+            lootPoints -= damageLP;
+            damage += ((damageLP) / DAMAGE_LP_CONVERT);
+            swing += lootPoints / SWING_LP_CONVERT;
+        }
         damage = Math.round(damage);
-
-        swing += lootPoints/SWING_LP_CONVERT;
         swing = Math.round(swing*10d)/10d;
 
         return ItemBuilder.createWeapon(
-                HistoryGenerator.generateSwordHistory(weapEnch.getTrait(),weaponType, HistoryGenerator.Gender.MALE, HistoryGenerator.NameQuality.NOBLE),
+                rarity + HistoryGenerator.generateSwordHistory(weapEnch.getTrait(),weaponType, HistoryGenerator.Gender.MALE, HistoryGenerator.NameQuality.NOBLE),
                 null, mat,damage,swing,false,weapEnch);
     }
 
@@ -267,5 +272,21 @@ public class LootManager {
 
     public static ItemStack simpleLoot(int lootPoints, int power){
         return null;
+    }
+
+    public static final int RARITY_UNCOMMON = 60;
+    public static final int RARITY_RARE = 125;
+    public static final int RARITY_EPIC = 150;
+
+    public static String rarityChatTags(int lootPoints){
+        if(lootPoints > RARITY_EPIC){
+            return ChatColor.RESET + "" + ChatColor.RED;
+        } else if(lootPoints > RARITY_RARE){
+            return ChatColor.RESET + "" + ChatColor.GOLD;
+        } else if(lootPoints > RARITY_UNCOMMON){
+            return ChatColor.RESET + "" + ChatColor.AQUA;
+        } else {
+            return ChatColor.RESET.toString() + ChatColor.WHITE;
+        }
     }
 }
