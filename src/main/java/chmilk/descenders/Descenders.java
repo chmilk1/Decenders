@@ -18,7 +18,6 @@ import org.bukkit.block.Chest;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,6 +34,8 @@ public class Descenders extends JavaPlugin {
     @Override
     public  void onEnable(){
         plugin = this;
+
+        this.getServer().getPluginManager().registerEvents(new BlockHandler(),this);
 
         dungeons.put(TEST_DUNGEON, new Dungeon(getServer().getWorld("world"),
                 TEST_DUNGEON,
