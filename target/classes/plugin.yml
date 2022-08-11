@@ -34,6 +34,9 @@ commands:
   printLootSpots:
     description: "Prints loot spots for a given dungeon"
     usage: "Usage /<command> [dungeon name]"
+  printOreSpots:
+    description: "Prints ore spots for a given dungeon"
+    usage: "Usage /<command> [dungeon name]"
   fillLootSpots:
     description: "Fills the loot spots of a dungeon"
     usage: "Usage /<command> [dungeon name]"

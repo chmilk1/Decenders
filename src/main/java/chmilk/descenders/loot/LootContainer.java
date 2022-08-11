@@ -33,7 +33,7 @@ public abstract class LootContainer extends Loot {
                     localLP = Math.min((int)(localLP * LOOTPOINTS_RARITY_MULTIPLIER),lootPoints);
                 }
             }
-            type = rand.nextInt(6);//7 normally, artifacts disabled
+            type = rand.nextInt(8);//7 normally, artifacts disabled
 
             if(type < 2){
                 addItem(LootManager.createWeapon(localLP,0));

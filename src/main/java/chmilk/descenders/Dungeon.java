@@ -45,25 +45,33 @@ public class Dungeon {
     }
 
     public void save(File file){
+        System.out.println("... Deleting File");
         file.delete();
+        System.out.println("File Deleted");
         BufferedWriter fileWriter;
         try {
             file.createNewFile();
+            System.out.println("Created New file");
             fileWriter = new BufferedWriter(new FileWriter(file));
-
+            System.out.println("Init Buffered Writer");
             fileWriter.write(internalName + " " + publicName + " " + description);
 
+            System.out.println("... Saving Loot Spots");
             for (Loot loot: lootSpots) {
                 fileWriter.newLine();
                 fileWriter.write(loot.getType() + " " + (int) loot.getLocation().getX() + " " + (int) loot.getLocation().getY() + " " + (int) loot.getLocation().getZ());
             }
+            System.out.println("Loot Spots Saved");
 
+            System.out.println("... Saving Ore Spots");
             for (Ore ore: oreSpots) {
                 fileWriter.newLine();
                 fileWriter.write(ore.toString());
             }
+            System.out.println("Ore Spots Saved");
 
             fileWriter.close();
+            System.out.println("File Closed");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +103,9 @@ public class Dungeon {
                     } else if(words[0].equals("Barrel")){
                         lootSpots.add(new LootBarrel((Barrel) world.getBlockAt(x,y,z).getState()));
                     } else if(words[0].equals("Ore")){
-                        oreSpots.add(new Ore(world.getBlockAt(x,y,z), line.substring(6 + words[1].length() + words[2].length() + words[3].length() ,line.length()))); //Ore 1 2 3
+                        oreSpots.add(new Ore(world.getBlockAt(x,y,z),
+                                Boolean.parseBoolean(words[4]),Boolean.parseBoolean(words[5]),Boolean.parseBoolean(words[6]),Boolean.parseBoolean(words[7]),
+                                Boolean.parseBoolean(words[8]),Boolean.parseBoolean(words[9]),Boolean.parseBoolean(words[10]),Boolean.parseBoolean(words[11])));
                     }
                 }
             }

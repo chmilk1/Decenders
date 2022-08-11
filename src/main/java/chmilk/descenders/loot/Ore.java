@@ -5,6 +5,7 @@
 
 package chmilk.descenders.loot;
 
+import chmilk.descenders.util.RandomContainer;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -48,18 +49,54 @@ public class Ore {
 
     public Ore(){
         this.block = null;
-        this.coal = false;
-        this.copper = false;
-        this.iron = false;
-        this.gold = false;
-        this.redstone = false;
-        this.lapiz = false;
-        this.diamond = false;
-        this.emerald = false;
+        this.coal = true;
+        this.copper = true;
+        this.iron = true;
+        this.gold = true;
+        this.redstone = true;
+        this.lapiz = true;
+        this.diamond = true;
+        this.emerald = true;
     }
 
     public void refillOre(){
-        block.setType(Material.IRON_ORE);
+        int oreNum = RandomContainer.rand.nextInt(100);
+        if(oreNum < 4 && emerald){
+            block.setType(Material.EMERALD_ORE);
+        } else if(oreNum < 10 && diamond){
+            block.setType(Material.DIAMOND_ORE);
+        } else if(oreNum < 18 && lapiz){
+            block.setType(Material.LAPIS_ORE);
+        } else if(oreNum < 30 && gold){
+            block.setType(Material.GOLD_ORE);
+        } else if(oreNum < 48 && redstone){
+            block.setType(Material.REDSTONE_ORE);
+        } else if(oreNum < 68 && iron){
+            block.setType(Material.IRON_ORE);
+        } else if(oreNum < 88 && copper){
+            block.setType(Material.COPPER_ORE);
+        } else if(oreNum < 101 && coal){
+            block.setType(Material.COAL_ORE);
+        } else {
+            if(coal){
+                block.setType(Material.COAL_ORE);
+            } else if(copper){
+                block.setType(Material.COPPER_ORE);
+            } else if(iron){
+                block.setType(Material.IRON_ORE);
+            } else if(redstone){
+                block.setType(Material.REDSTONE_ORE);
+            } else if(gold){
+                block.setType(Material.GOLD_ORE);
+            } else if(lapiz){
+                block.setType(Material.LAPIS_ORE);
+            } else if(diamond){
+                block.setType(Material.DIAMOND_ORE);
+            } else if(emerald){
+                block.setType(Material.EMERALD_ORE);
+            }
+        }
+
     }
 
     public String getOreFlags(){

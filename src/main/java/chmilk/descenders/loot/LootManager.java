@@ -8,12 +8,8 @@ package chmilk.descenders.loot;
 import chmilk.descenders.util.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.block.data.type.Switch;
 import org.bukkit.inventory.ItemStack;
-import org.checkerframework.checker.units.qual.A;
 
-import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -39,8 +35,8 @@ public class LootManager {
     public static final double DAMAGE_SPADE_MULTI = 1.25;
     public static final double DAMAGE_LP_CONVERT = 55;
 
-    public static final double DAMAGE_GOLD = 1.4;
-    public static final double DAMAGE_DIAMOND = 1.2;
+    public static final double DAMAGE_GOLD = 1.2;
+    public static final double DAMAGE_DIAMOND = 1.1;
 
     public static final double SWING_BASE = 1.5;
     public static final double SWING_AXE_MULTI = 0.6;
@@ -52,6 +48,7 @@ public class LootManager {
     public static final double SWING_WOOD = .95;
 
     public static final int SIMPLELOOT_GOLDLP = 2;
+    public static final int SIMPLELOOT_AAROWLP = 6;
     public static final int SIMPLELOOT_FOODPERLP = 24;
     public static final double SIMPLELOOT_FOOD_BREAD = 1;
     public static final double SIMPLELOOT_FOOD_MELLON = .6;
@@ -96,9 +93,10 @@ public class LootManager {
             //weapon is a sword
             weaponType = HistoryGenerator.getWeapType(HistoryGenerator.WeaponType.SWORD);
 
-            int matRand = rand.nextInt(5);
+            int matRand = rand.nextInt(8);
             switch (matRand){
                 case 0:
+                case 6:
                     mat = Material.IRON_SWORD;
                     break;
                 case 1:
@@ -116,6 +114,7 @@ public class LootManager {
                     swing*=SWING_WOOD;
                     break;
                 case 4:
+                case 7:
                     mat = Material.STONE_SWORD;
                     break;
             }
@@ -126,9 +125,10 @@ public class LootManager {
             damage *= DAMAGE_DAGGER_MULTI;
             swing *= SWING_DAGGER_MULTI;
 
-            int matRand = rand.nextInt(5);
+            int matRand = rand.nextInt(8);
             switch (matRand){
                 case 0:
+                case 6:
                     mat = Material.IRON_HOE;
                     break;
                 case 1:
@@ -146,6 +146,7 @@ public class LootManager {
                     swing*=SWING_WOOD;
                     break;
                 case 4:
+                case 7:
                     mat = Material.STONE_HOE;
                     break;
             }
@@ -156,9 +157,10 @@ public class LootManager {
             damage *= DAMAGE_PICK_MULTI;
             swing *= SWING_PICK_MULTI;
 
-            int matRand = rand.nextInt(5);
+            int matRand = rand.nextInt(8);
             switch (matRand){
                 case 0:
+                case 6:
                     mat = Material.IRON_PICKAXE;
                     break;
                 case 1:
@@ -176,6 +178,7 @@ public class LootManager {
                     swing*=SWING_WOOD;
                     break;
                 case 4:
+                case 7:
                     mat = Material.STONE_PICKAXE;
                     break;
             }
@@ -185,9 +188,10 @@ public class LootManager {
             damage *= DAMAGE_AXE_MULTI;
             swing *= SWING_AXE_MULTI;
 
-            int matRand = rand.nextInt(5);
+            int matRand = rand.nextInt(8);
             switch (matRand){
                 case 0:
+                case 6:
                     mat = Material.IRON_AXE;
                     break;
                 case 1:
@@ -205,6 +209,7 @@ public class LootManager {
                     swing*=SWING_WOOD;
                     break;
                 case 4:
+                case 7:
                     mat = Material.STONE_AXE;
                     break;
             }
@@ -214,9 +219,10 @@ public class LootManager {
             damage *= DAMAGE_SPADE_MULTI;
             swing *= SWING_SPADE_MULTI;
 
-            int matRand = rand.nextInt(5);
+            int matRand = rand.nextInt(8);
             switch (matRand){
                 case 0:
+                case 6:
                     mat = Material.IRON_SHOVEL;
                     break;
                 case 1:
@@ -234,6 +240,7 @@ public class LootManager {
                     swing*=SWING_WOOD;
                     break;
                 case 4:
+                case 7:
                     mat = Material.STONE_SHOVEL;
                     break;
             }
@@ -267,7 +274,7 @@ public class LootManager {
     }
 
     public static ItemStack simpleLoot(int lootPoints, int power){
-        switch (rand.nextInt(3)){
+        switch (rand.nextInt(5)){
             case 0: //gold
             case 1:
                 if(lootPoints < 9 * SIMPLELOOT_GOLDLP){
@@ -288,6 +295,9 @@ public class LootManager {
                     case 4: //pork
                         return new ItemStack(Material.COOKED_PORKCHOP,(int)(lootPoints/SIMPLELOOT_FOODPERLP/SIMPLELOOT_FOOD_PORK));
                 }
+            case 3:
+            case 4:
+                return new ItemStack(Material.ARROW, lootPoints/ SIMPLELOOT_AAROWLP);
         }
         return new ItemStack(Material.GOLD_INGOT,1);
     }
