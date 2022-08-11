@@ -25,8 +25,17 @@ commands:
   removechest:
     description: "Remove a chest from a dungeon's loot list"
     usage: "Usage /<command> [dungeon name]"
+  addore:
+    description: "Add chest to a dungeon's loot list"
+    usage: "Usage /<command> [dungeon name]"
+  removeore:
+    description: "Remove a chest from a dungeon's loot list"
+    usage: "Usage /<command> [dungeon name]"
   printLootSpots:
     description: "Prints loot spots for a given dungeon"
+    usage: "Usage /<command> [dungeon name]"
+  printOreSpots:
+    description: "Prints ore spots for a given dungeon"
     usage: "Usage /<command> [dungeon name]"
   fillLootSpots:
     description: "Fills the loot spots of a dungeon"

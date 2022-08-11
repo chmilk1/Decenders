@@ -1,17 +1,18 @@
 chmilk\descenders\util\HistoryGenerator$Gender.class
 chmilk\descenders\util\WeaponEnchantments.class
 chmilk\descenders\util\BowEnchantments.class
-chmilk\descenders\BlockBreakHandler.class
 chmilk\descenders\Difficulty.class
 chmilk\descenders\util\ArmourEnchantments.class
 chmilk\descenders\util\Names.class
 chmilk\descenders\util\RandomContainer.class
 chmilk\descenders\playerinfo\HealthManager.class
 chmilk\descenders\loot\LootManager.class
+chmilk\descenders\BlockHandler$1.class
 chmilk\descenders\loot\LootContainer.class
 chmilk\descenders\util\GlobalFlags.class
 chmilk\descenders\util\HistoryGenerator$Trait.class
 chmilk\descenders\Dungeon.class
+chmilk\descenders\loot\Ore.class
 chmilk\descenders\util\HistoryGenerator$NameQuality.class
 chmilk\descenders\loot\LootChest.class
 chmilk\descenders\util\ItemBuilder.class
@@ -23,3 +24,4 @@ chmilk\descenders\loot\LootBarrel.class
 chmilk\descenders\playerinfo\PlayerStats.class
 chmilk\descenders\util\HistoryGenerator$1.class
 chmilk\descenders\Descenders.class
+chmilk\descenders\BlockHandler.class

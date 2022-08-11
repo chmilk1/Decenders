@@ -8,6 +8,7 @@ package chmilk.descenders;
 import chmilk.descenders.loot.LootBarrel;
 import chmilk.descenders.loot.LootChest;
 import chmilk.descenders.loot.LootManager;
+import chmilk.descenders.loot.Ore;
 import chmilk.descenders.util.ItemBuilder;
 import chmilk.descenders.util.Kits;
 import chmilk.descenders.util.WeaponEnchantments;
@@ -138,6 +139,28 @@ public class Descenders extends JavaPlugin {
                 }
                 sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
                 return true;
+            /*
+            adds a ore spot to a dungeon
+             */
+            } else if (label.equalsIgnoreCase("addOre") && sender.isOp()){
+                if(args.length > 0) {
+                    dungeons.get(args[0]).addOreSpot(new Ore(player.getTargetBlock(null, 5)));
+                    sender.sendMessage(ChatColor.GREEN + "Ore added to " + args[0]);
+                    return true;
+                }
+                sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
+                return true;
+            /*
+            removes a ore spot from a dungeon
+             */
+            } else if (label.equalsIgnoreCase("removeOre") && sender.isOp()){
+                if(args.length > 0) {
+                    dungeons.get(args[0]).removeOreSpot(new Ore(player.getTargetBlock(null, 5)));
+                    sender.sendMessage(ChatColor.GREEN +"Ore removed from " + args[0]);
+                    return true;
+                }
+                sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
+                return true;
             }
             /*
              * Testing items
@@ -198,6 +221,16 @@ public class Descenders extends JavaPlugin {
         if(label.equalsIgnoreCase("printLootSpots") && sender.isOp()) {
             if(args.length > 0) {
                 dungeons.get(args[0]).printLootSpots(sender);
+                return true;
+            }
+            sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
+            return true;
+        /*
+        prints the ore spots of a dungeon
+         */
+        } else if(label.equalsIgnoreCase("printOreSpots") && sender.isOp()) {
+            if(args.length > 0) {
+                dungeons.get(args[0]).printOreSpots(sender);
                 return true;
             }
             sender.sendMessage(ChatColor.RED + "not enough arguments, add dungeon name.");
