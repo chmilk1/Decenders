@@ -51,14 +51,14 @@ public class BlockHandler implements Listener {
             case IRON_ORE:
             case LAPIS_ORE:
             case REDSTONE_ORE:
-            case DEEPSLATE_COAL_ORE:
-            case DEEPSLATE_COPPER_ORE:
-            case DEEPSLATE_DIAMOND_ORE:
-            case DEEPSLATE_EMERALD_ORE:
-            case DEEPSLATE_GOLD_ORE:
-            case DEEPSLATE_IRON_ORE:
-            case DEEPSLATE_LAPIS_ORE:
-            case DEEPSLATE_REDSTONE_ORE:
+//            case DEEPSLATE_COAL_ORE:
+//            case DEEPSLATE_COPPER_ORE:
+//            case DEEPSLATE_DIAMOND_ORE:
+//            case DEEPSLATE_EMERALD_ORE:
+//            case DEEPSLATE_GOLD_ORE:
+//            case DEEPSLATE_IRON_ORE:
+//            case DEEPSLATE_LAPIS_ORE:
+//            case DEEPSLATE_REDSTONE_ORE:
                 return true;
         }
         return false;

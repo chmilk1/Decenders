@@ -48,7 +48,7 @@ public class LootManager {
     public static final double SWING_WOOD = .95;
 
     public static final int SIMPLELOOT_GOLDLP = 2;
-    public static final int SIMPLELOOT_AAROWLP = 6;
+    public static final int SIMPLELOOT_AAROWLP = 16;
     public static final int SIMPLELOOT_FOODPERLP = 24;
     public static final double SIMPLELOOT_FOOD_BREAD = 1;
     public static final double SIMPLELOOT_FOOD_MELLON = .6;
@@ -261,6 +261,27 @@ public class LootManager {
     }
 
     public static ItemStack createRanged(int lootPoints, int power){
+
+        ArrayList<String> lore = null;
+        if(GlobalFlags.LOOTPOINTS_DEBUG){
+            lore = new ArrayList<String>();
+            lore.add(rarityNames(lootPoints));
+            lore.add(ChatColor.ITALIC + "LP: "+lootPoints);
+        }
+
+        //deciding enchantments
+        BowEnchantments bowEnch = new BowEnchantments();
+        int enchantments = 0;
+        boolean enchantDone = false;
+        while(!enchantDone && lootPoints > 0){
+            if(rand.nextInt(100) < ENCHANT_CHANCE * Math.pow(ENCHANT_DECAY,enchantments) * ENCHANT_WEAPON_DEBUF * Math.min(lootPoints * ENCHANT_LP_CHANCE,ENCHANT_LP_MAX)){
+                enchantments += 1;
+                lootPoints -= ENCHANT_WEAPON_LP + bowEnch.rollEnchant(rand.nextInt(100), false);
+            } else {
+                enchantDone = true;
+            }
+        }
+
         return ItemBuilder.createBow("LP:" + lootPoints,null,false,false,null);
     }
 
@@ -302,7 +323,7 @@ public class LootManager {
         return new ItemStack(Material.GOLD_INGOT,1);
     }
 
-    public static final int RARITY_UNCOMMON = 60;
+    public static final int RARITY_UNCOMMON = 70;
     public static final int RARITY_RARE = 125;
     public static final int RARITY_EPIC = 150;
 

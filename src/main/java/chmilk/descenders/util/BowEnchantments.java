@@ -41,6 +41,20 @@ public class BowEnchantments {
         this.qc = qc;
     }
 
+    public BowEnchantments() {
+        this.mend = 0;
+        this.unbreaking = 0;
+        this.unbreakable = 0;
+        this.vanish = 0;
+        this.flame = 0;
+        this.inf = 0;
+        this.multi = 0;
+        this.pierce = 0;
+        this.power = 0;
+        this.punch = 0;
+        this.qc = 0;
+    }
+
     public int getMend() {
         return mend;
     }
@@ -180,5 +194,23 @@ public class BowEnchantments {
             lore.add(ChatColor.RESET + "" + ChatColor.YELLOW + "Quick Charge "+ qc);
         }
 
+    }
+
+    public int rollEnchant(int nextInt, boolean crossbow) {
+        if(crossbow){
+            return rollCrossEnchant(nextInt);
+        } else {
+            return rollBowEnchant(nextInt);
+        }
+    }
+
+    public int rollCrossEnchant(int nextInt) {
+
+        return 0;
+    }
+
+    public int rollBowEnchant(int nextInt) {
+
+        return 0;
     }
 }
